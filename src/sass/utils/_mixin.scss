@@ -1,3 +1,20 @@
+@mixin tablet_max {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
 @mixin font ($f-w, $f-s, $l-h) {
     font-weight: $f-w;
         font-size: $f-s;
@@ -10,3 +27,4 @@
         @content;
     }
 }
+

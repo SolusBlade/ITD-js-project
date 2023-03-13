@@ -1,0 +1,154 @@
+.gallery__title {
+  text-align: center;
+  margin-bottom: 60px;
+  @include tablet_max {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.9;
+  }
+  @include tablet {
+    font-size: 32px;
+  }
+  @include desktop {
+    font-size: 48px;
+    line-height: 1.5;
+  }
+}
+
+.gallery__list {
+  display: flex;
+  @include tablet_max {
+    flex-direction: column;
+    gap: 20px;
+  }
+  @include tablet {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+
+.gallery__item {
+  @include tablet_max {
+    max-width: 440px;
+  }
+  @include tablet {
+    width: 335px;
+  }
+  @include desktop {
+    width: 395px;
+  }
+}
+
+.coctails__card {
+  border: 1px solid $accent-color;
+  border-radius: 4px;
+}
+.img_wrapper {
+  width: 100%;
+}
+
+.coctails__info {
+  text-align: center;
+}
+
+.coctails__title {
+  font-family: 'Roboto';
+  font-weight: 900;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @include tablet_max {
+    margin-top: 48px;
+
+    font-size: 26px;
+    line-height: 1.61;
+  }
+  @include tablet {
+    margin-top: 20px;
+
+    font-size: 28px;
+    line-height: 1.17;
+  }
+  @include desktop {
+    font-size: 32px;
+    line-height: 1.19;
+  }
+}
+.coctails__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include tablet_max {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    gap: 20px;
+  }
+  @include tablet {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+  @include desktop {
+    margin-top: 27px;
+    margin-bottom: 28px;
+    gap: 16px;
+  }
+}
+.primary__btn {
+  font-family: 'Roboto';
+  font-weight: 400;
+  letter-spacing: 0.02em;
+
+  border-radius: 4px;
+
+  background-color: $btn-bg-color;
+  color: $white-color;
+
+  @include tablet_max {
+    font-size: 14px;
+    line-height: 1.71;
+    padding: 8px 20px;
+  }
+  @include tablet {
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 12px 27px;
+  }
+
+  @include desktop {
+    padding: 12px 38px;
+  }
+}
+
+.secondary__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Roboto';
+  font-weight: 400;
+  letter-spacing: 0.02em;
+
+  border-radius: 4px;
+  border: 1px solid $accent-color;
+  color: $accent-color;
+  background-color: $white-color;
+  @include tablet_max {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.71;
+    padding: 8px 20px;
+    gap: 9px;
+  }
+  @include tablet {
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 12px 20px;
+
+    gap: 6px;
+  }
+  @include desktop {
+    padding: 12px 24px;
+  }
+}
+.empty__heart {
+  fill: $accent-color;
+}
