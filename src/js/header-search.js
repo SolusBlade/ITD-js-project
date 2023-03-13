@@ -1,4 +1,7 @@
 import base from "./base-url";
+import buildCard from "./renderCards";
+import buildNotFind from "./renderOnNotFind";
+
 import axios from 'axios';
 
 const searfchFormRef = document.querySelector('.header__search');
@@ -19,12 +22,11 @@ searfchFormRef.addEventListener('submit', onSubmit);
 async function onSubmit(e) {
     e.preventDefault();
     
-    const drinks = await searchFetch(searchInputRef.value.trim());
-    console.log(drinks.drinks);
-    
-    // buildCard();
+    const {drinks} = await searchFetch(searchInputRef.value.trim());
+
+    if(drinks === null){
+      buildNotFind();
+      return;
+    }
+    buildCard(drinks);
 }
-
-// function buildCard(){
-
-// }
