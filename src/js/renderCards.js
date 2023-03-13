@@ -1,5 +1,4 @@
 import './base-url';
-import fetchData from './fetchData';
 const galleryListRef = document.querySelector('.gallery__list');
 
 export default function renderCards(data) {
