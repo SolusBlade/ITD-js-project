@@ -1,13 +1,25 @@
 <header>
   <div class="container header__container">
-    <a href="./" class="header__logo">cocktails</a>
+    <a href="./index.html" class="header__logo">cocktails</a>
     <nav class="header__nav">
       <ul class="header__nav-list">
         <li class="header__nav-item">
-          <a href="" class="header__nav-link">Home</a>
+          <a href="./index.html" class="header__nav-link">Home</a>
         </li>
         <li class="header__nav-item">
           <a href="" class="header__nav-link">Favorite</a>
+          <ul class="header__menu-block">
+            <li class="header__menu-item">
+              <a href="./cocktails.html" class="header__menu-link"
+                >Favorite cocktails</a
+              >
+            </li>
+            <li class="header__menu-item">
+              <a href="./ingredients.html" class="header__menu-link"
+                >Favorite ingredients</a
+              >
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
@@ -26,7 +38,7 @@
     </button>
     <div class="header__theme-box">
       <p class="header__theme-text">Light</p>
-      <input type="checkbox" class="header__theme-switch" />
+      <input type="checkbox" name="search" class="header__theme-switch" />
       <p class="header__theme-text">Dark</p>
     </div>
   </div>
