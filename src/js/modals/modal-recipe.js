@@ -6,7 +6,6 @@ import {
 import { showModal, hideModal } from './modal-control';
 
 const { body, modalRecipeEl, modalRecipeOpenBtns, modalRecipeCloseBtn } = refs;
-console.log('modalRecipeOpenBtns:', modalRecipeOpenBtns);
 
 addEventListenersOnButtons(modalRecipeOpenBtns);
 

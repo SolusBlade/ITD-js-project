@@ -1,11 +1,9 @@
 .gallery {
   @include tablet_max {
     padding-top: 40px;
-    padding-bottom: 20px;
   }
   @include tablet {
     padding-top: 60px;
-    padding-bottom: 60px;
   }
 }
 .gallery__title {
