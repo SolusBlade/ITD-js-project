@@ -88,4 +88,135 @@
         color: $medium-grey-color;
     }
 }
+.header__theme-list {
+   
+    display: none;
+    display: flex;
+    gap: 12px;
+}
 
+.header__theme-item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.header__theme-light {
+    /* font-family: var(); */
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    color: #fd5103;
+}
+
+.header__theme-dark {
+    /* font-family: var(); */
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    color: #5f6775;
+}
+
+.toggle-button {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    margin: 0;
+
+    background: #ffffff;
+    border: 0.6px solid #fd5103;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    transition: all 250ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.toggle-button::after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+    background-color: #fd5103;
+    border-radius: 50%;
+
+    transform: translateX(0);
+
+    transition: all 250ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.toggle-button:checked::after {
+    transform: translateX(calc(100% + 3px));
+    background-color: #fff;
+}
+
+.toggle-button:checked {
+    border: 0.6px solid #fff;
+    background-color: #fd5103;
+}
+
+
+
+
+.header__nav-item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: 0.02em;
+    color: #202025;
+}
+.fav__dropdown-item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33px;
+
+    letter-spacing: 0.02em;
+
+    color: #000000;
+}
+
+.fav__select {
+    position: relative;
+}
+
+.fav__select-input {
+    cursor: pointer;
+}
+
+.fav__list {
+    position: absolute;
+    border: 1px solid #FD5103;
+    border-radius: 4px;
+    width: 210px;
+}
+
+.fav__dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 48px;
+}
+
+.fav__nav-link {
+    background-color: inherit;
+    border: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    height: 48px;
+    width: 100%;
+    color: #202025;
+
+    &:hover,
+    &:focus {
+        background-color: #FD5103;
+        color: #FFFFFF;
+    }
+}
