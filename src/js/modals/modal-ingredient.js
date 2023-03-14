@@ -1,7 +1,5 @@
-// const refs = {
-//   closeBtn: document.querySelector('[data-modal-ingredient-close]'),
-//   modal: document.querySelector('[data-modal-ingredient]'),
-// };
+import { refs } from '../config/refs';
+
 // console.log('closeBtn:', refs.closeBtn);
 
 // if (refs.closeBtn) {
