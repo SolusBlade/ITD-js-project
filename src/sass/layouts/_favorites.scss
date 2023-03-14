@@ -156,7 +156,7 @@
 .favorite-button__learn-more {
     // font-family: 'Roboto';
     height: 39px;
-    width: calc((100% - 20px) / 2);
+    width: calc(50% - 10px);
     background-color: $btn-bg-color;
     border-radius: 4px;
     font-weight: 400;
@@ -179,7 +179,7 @@
 .favorite-button__remove {
     // font-family: 'Roboto';
     height: 39px;
-    width: calc((100% - 20px) / 2);
+    width: calc(50% - 10px);
     border-radius: 4px;
     border: 1px solid $accent-color;
     font-weight: 400;
