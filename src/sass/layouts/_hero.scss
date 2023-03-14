@@ -1,0 +1,161 @@
+.hero-container {
+    @media screen and (max-width: 767px) {
+        padding-top: 69px;
+        padding-bottom: 40px;
+    }
+    @media screen and (min-width: 768px){
+        display: flex;
+        justify-content: space-between;
+        padding-top: 100px;
+    }
+    @media screen and (min-width: 1280px) {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 97px;
+    }
+}
+
+.hero-title {
+    font-weight: 600;
+    color: $accent-color;
+    @media screen and (max-width: 767px) {
+        margin-bottom: 38px;
+        max-width: 300px;
+        font-size: 22px;
+        line-height: 1.9;
+    }
+    @media screen and (min-width: 768px){
+        font-size: 26px;
+        line-height: 1.6;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 688px;
+        font-size: 52px;
+        line-height: 1.5;
+    }
+}
+
+.hero-title-description {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: $title-light-color;
+    opacity: 0.8;
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1279px){
+        margin-top: 40px;
+        font-size: 14px;
+        line-height: 2;
+    }
+    @media screen and (min-width: 1280px) {
+        margin-top: 40px;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+}
+
+.hero-title-description-mobile {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: $title-light-color;
+    opacity: 0.8;
+    @media screen and (max-width: 767px) {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 2;
+    }
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+}
+
+.hero-alphabet-search {
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}
+
+.alphabet-list {
+    text-align: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        max-width: 324px;
+    }
+    @media screen and (min-width: 1280px) {
+        max-width: 520px;
+    }
+}
+
+.alphabet-list-item {
+    font-weight: 700;
+    color: $medium-grey-color;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 24px;
+        line-height: 1.5;
+    }
+}
+
+.alphabet-list-item:hover .alphabet-item,
+.alphabet-list-item:focus .alphabet-item{
+    -webkit-text-fill-color: $accent-color;
+    -webkit-text-stroke: 0.7px $medium-grey-color;
+    text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
+    transform: scale(1.05);
+}
+
+.alphabet-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform $transition, text-shadow $transition, -webkit-text-fill-color $transition, -webkit-text-stroke $transition;
+    
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 24px;
+        height: 25px;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 40px;
+        height: 40px; 
+    }
+}
+
+// .alphabet-input-letter {
+//     border: 1px solid $accent-color;
+//     border-radius: 4px;
+//     color: $medium-grey-color;
+//     background-color: transparent;
+// }
+
+.search-alphabet-input {
+    @media screen and (max-width: 767px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 0 10px;
+        color: $accent-color;
+        border: 1px solid $accent-color;
+        background-color: transparent;
+        outline: none;
+        border-radius: 4px;
+        width: 93px;
+        height: 34px;
+    }
+    @media screen and (min-width: 768px){
+        display: none;
+    }
+}
+
+.input-icon {
+    fill: $accent-color;
+}

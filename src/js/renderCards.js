@@ -1,15 +1,20 @@
-import './base-url';
-import fetchData from './fetchData';
-const galleryListRef = document.querySelector('.gallery__list');
+const galleryRef = document.querySelector('.gallery .container');
+
 
 export default function renderCards(data) {
+  galleryRef.innerHTML = `
+  <h2 class="gallery__title">Cocktails</h2>
+  <ul class="gallery__list">
+  </ul>
+  `;
+  const galleryListRef = document.querySelector('.gallery__list');
   let card = data
     .map(
       item =>
         `<li class="gallery__item">
         <div class="coctails__card">
           <div class="img_wrapper">
-            <img src="${item.strDrinkThumb}" alt="" />
+            <img src="${item.strDrinkThumb}" alt=""/>
           </div>
           <div class="coctails__info">
             <h3 class="coctails__title">${item.strDrink}</h3>
@@ -18,7 +23,7 @@ export default function renderCards(data) {
               <button class="secondary__btn" type="button">
                 Add to
                 <svg class="empty__heart" width="21" height="19">
-                  <use href="./images/icons.svg#icon-empty-heart"></use>
+                  <use href="/icons.adfc4680.svg#icon-empty-heart"></use>
                 </svg>
               </button>
             </div>
@@ -28,5 +33,5 @@ export default function renderCards(data) {
     )
     .join('');
 
-  galleryListRef.insertAdjacentHTML('beforeend', card);
+  galleryListRef.innerHTML += card;
 }
