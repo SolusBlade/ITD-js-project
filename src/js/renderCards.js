@@ -1,11 +1,11 @@
-// const galleryRef = document.querySelector('.gallery .container');
+const galleryRef = document.querySelector('.gallery .container');
 
 export default function renderCards(data) {
-  // galleryRef.innerHTML = `
-  // <h2 class="gallery__title">Cocktails</h2>
-  // <ul class="gallery__list">
-  // </ul>
-  // `;
+  galleryRef.innerHTML = `
+  <h2 class="gallery__title">Cocktails</h2>
+  <ul class="gallery__list">
+  </ul>
+  `;
   const galleryListRef = document.querySelector('.gallery__list');
   let card = data
     .map(
