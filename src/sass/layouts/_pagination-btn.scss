@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 32px;
+}
+.numbers-container {
+  display: flex;
+  @include tablet_max {
+    gap: 8px;
+  }
+  gap: 14px;
+}
+.arrow {
+  width: 60px;
+  height: 40px;
+  font-size: 24px;
+
+  background: $pagination-btn-bg-color;
+  border: 1px solid #eaebea;
+  border-radius: 4px;
+  color: $btn-bg-color;
+}
+.numbers {
+  width: 40px;
+  height: 40px;
+
+  background: $pagination-btn-bg-color;
+  border: 1px solid #eaebea;
+  border-radius: 4px;
+  color: $btn-bg-color;
+}
