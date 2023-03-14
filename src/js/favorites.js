@@ -4,7 +4,10 @@ import axios from 'axios';
 const listCocktails = document.querySelector('.favorite-cocktails__list');
 const listIngridient = document.querySelector('.favorite-ingredients__list');
 const buttonRemove = document.querySelector('.favorite-button__remove');
-buttonRemove.addEventListener('click', removeFromLocalStorege);
+
+if (listCocktails) {
+  buttonRemove.addEventListener('click', removeFromLocalStorege);
+}
 
 function renderListFavorites() {
   listCocktails.innerHTML = `
