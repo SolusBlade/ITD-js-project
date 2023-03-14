@@ -1,7 +1,7 @@
 import './js/header-search';
-import './js/fetchData';
-import './js/renderCards';
-import './js/randomCoctails';
+import './js/fetch-data';
+import './js/render-cards';
+import './js/random-coctails';
 import './js/favorites';
 import './js/modal-ingredient';
 import './js/auth';

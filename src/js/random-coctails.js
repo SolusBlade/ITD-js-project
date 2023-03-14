@@ -1,6 +1,6 @@
 import axios from 'axios';
-import fetchData from './fetchData';
-import renderCards from './renderCards';
+import fetchData from './fetch-data';
+import renderCards from './render-cards';
 
 if (window.screen.width <= 767) {
   for (let i = 1; i <= 3; i++) {

@@ -1,6 +1,6 @@
 import base from "./base-url";
-import buildCard from "./renderCards";
-import buildNotFind from "./renderOnNotFind";
+import buildCard from "./render-cards";
+import buildNotFind from "./render-on-not-found";
 
 import axios from 'axios';
 
