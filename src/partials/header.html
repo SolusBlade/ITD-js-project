@@ -38,10 +38,13 @@
         <use href="./images/icons.svg#icon-profile"></use>
       </svg>
     </button>
-    <div class="header__theme-box">
-      <p class="header__theme-text">Light</p>
-      <input type="checkbox" name="search" class="header__theme-switch" />
-      <p class="header__theme-text">Dark</p>
+    <div class="header__theme-box header__theme-list">
+      <p class="header__theme-text header__theme-item header__theme-light">Light</p>
+      <div class="toggle">
+      <input type="checkbox" name="toggle" class="header__theme-switch dark-mode-toggle toggle-button" />
+       <label for="toggle-button" class="text"></label> 
+      </div>
+      <p class="header__theme-text header__theme-dark header__theme-item">Dark</p>
     </div>
   </div>
 </header>

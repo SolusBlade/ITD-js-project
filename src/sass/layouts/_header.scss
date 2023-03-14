@@ -67,7 +67,7 @@
         fill: $accent-color;
     }
     &__profile-btn{
-        margin-left: 90px;
+        margin-left: 80px;
         color: $accent-color;
         background-color: transparent;
         height: 40px;
@@ -88,4 +88,75 @@
         color: $medium-grey-color;
     }
 }
+.header__theme-list {
+   
+    display: none;
+    display: flex;
+    gap: 12px;
+}
 
+.header__theme-item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.header__theme-light {
+    /* font-family: var(); */
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    color: #fd5103;
+}
+
+.header__theme-dark {
+    /* font-family: var(); */
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    color: #5f6775;
+}
+
+.toggle-button {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    margin: 0;
+
+    background: #ffffff;
+    border: 0.6px solid #fd5103;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    transition: all 250ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.toggle-button::after {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+    background-color: #fd5103;
+    border-radius: 50%;
+
+    transform: translateX(0);
+
+    transition: all 250ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.toggle-button:checked::after {
+    transform: translateX(calc(100% + 3px));
+    background-color: #fff;
+}
+
+.toggle-button:checked {
+    border: 0.6px solid #fff;
+    background-color: #fd5103;
+}
