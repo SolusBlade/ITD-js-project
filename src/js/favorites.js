@@ -6,15 +6,24 @@ const listIngridient = document.querySelector('.favorite-ingredients__list');
 const buttonRemove = document.querySelector('.favorite-button__remove');
 buttonRemove.addEventListener('click', removeFromLocalStorege);
 
-function removeFromLocalStorege(card) {
-  localStorage.removeItem(card);
+function renderListFavorites() {
+  listCocktails.innerHTML = `
+     <p class="favorite-cocktails__text">
+          You haven't added any favorite cocktails yet
+        </p>`;
+  listIngridient.innerHTML = `  <p class="favorite-ingredients__text">
+          You haven't added any favorite ingridients yet
+        </p>`;
 }
 
-function createCardCoctail() {
-  return `<li class="favorite-cocktails__item">
-            <img class="favorite-cocktails__item-img" src="" alt="" />
+function createCardCoctail(data) {
+  let card = data
+    .map(
+      item =>
+        `<li class="favorite-cocktails__item">
+            <img class="favorite-cocktails__item-img" src="${item.strDrinkThumb}" alt="" />
             <div class="favorite-cocktails__item-container">
-              <h2 class="favorite-cocktails__item-title">Campari</h2>
+              <h2 class="favorite-cocktails__item-title">${item.strDrink}</h2>
               <div class="button-container">
                 <button type="button" class="favorite-button__learn-more">
                   Learn more
@@ -28,12 +37,18 @@ function createCardCoctail() {
               </div>
             </div>
           </li>
-    `;
+    `
+    )
+    .join('');
+  listCocktails.insertAdjacentHTML(data);
 }
 
 function createCardIngridient() {
-  return `<li class="favorite-ingredients__item">
-            <h2 class="favorite-ingredients__item-title">Campari</h2>
+  let card = data
+    .map(
+      item =>
+        `<li class="favorite-ingredients__item">
+            <h2 class="favorite-ingredients__item-title">${item.strDrink}</h2>
             <p class="favorite-ingredients__item-text">Liqueur</p>
             <div class="favorite-button-container">
               <button type="button" class="favorite-button__learn-more">
@@ -47,5 +62,8 @@ function createCardIngridient() {
               </button>
             </div>
           </li>
-  `;
+  `
+    )
+    .join('');
+  listIngridient.insertAdjacentHTML(data);
 }
