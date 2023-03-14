@@ -174,13 +174,13 @@
     line-height: calc(26 / 16);
   }
   &__ingredient-link {
-    color: inherit;
     transition: color $transition;
     &::before {
       content: '✶ ';
       color: $dark-bg-color;
     }
     &:hover {
+      cursor: pointer;
       color: $accent-color;
       &::before {
         color: inherit;
