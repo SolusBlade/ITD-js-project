@@ -24,7 +24,7 @@ async function onClick(event) {
     return;
   }
   renderCards(drinks);
-  onAddItems();
+  // onAddItems();
 }
 
 const alphabetItems = alphabetList.querySelectorAll('.alphabet-list-item');

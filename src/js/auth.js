@@ -44,4 +44,4 @@ async function onBtnClick(){
 
 
 profileBtn.addEventListener("click", getIn);
-assBtn.addEventListener('click', onBtnClick);
+// assBtn.addEventListener('click', onBtnClick);
