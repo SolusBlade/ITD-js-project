@@ -17,6 +17,10 @@
   visibility: hidden;
   pointer-events: none;
 }
+.modal-open {
+  overflow: hidden;
+  // pointer-events: none;
+}
 
 .backdrop.is-hidden .modal-recipe {
   transform: scale(0.8) translate(-50%, -50%);
@@ -168,6 +172,20 @@
   }
   &__ingredient {
     line-height: calc(26 / 16);
+  }
+  &__ingredient-link {
+    color: inherit;
+    transition: color $transition;
+    &::before {
+      content: '✶ ';
+      color: $dark-bg-color;
+    }
+    &:hover {
+      color: $accent-color;
+      &::before {
+        color: inherit;
+      }
+    }
   }
   &__btn {
     padding: 12px 24px;

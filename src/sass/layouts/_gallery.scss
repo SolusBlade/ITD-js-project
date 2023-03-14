@@ -1,3 +1,11 @@
+.gallery {
+  @include tablet_max {
+    padding-top: 40px;
+  }
+  @include tablet {
+    padding-top: 60px;
+  }
+}
 .gallery__title {
   text-align: center;
   margin-bottom: 60px;
@@ -67,10 +75,6 @@
     font-size: 28px;
     line-height: 1.17;
   }
-  @include desktop {
-    font-size: 32px;
-    line-height: 1.19;
-  }
 }
 .coctails__btn {
   display: flex;
@@ -92,7 +96,7 @@
     gap: 16px;
   }
 }
-.primary__btn {
+.primary-load-more {
   font-family: 'Roboto';
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -118,7 +122,7 @@
   }
 }
 
-.secondary__btn {
+.secondary-add-favorites {
   display: flex;
   justify-content: center;
   align-items: center;
