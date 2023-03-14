@@ -19,8 +19,8 @@ export default function renderCards(data) {
           <div class="coctails__info">
             <h3 class="coctails__title">${item.strDrink}</h3>
             <div class="coctails__btn">
-              <button class="primary__btn" type="button">Learn more</button>
-              <button class="secondary__btn" type="button">
+              <button class="primary-load-more" data-type="open-learn-more" data-id="${item.idDrink}" type="button">Learn more</button>
+              <button class="secondary-add-favorites" data-id="${item.idDrink}" data-favorite="cocktail" type="button">
                 Add to
                 <svg class="empty__heart" width="21" height="19">
                   <use href="/icons.adfc4680.svg#icon-empty-heart"></use>
