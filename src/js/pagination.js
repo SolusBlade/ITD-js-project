@@ -7,10 +7,28 @@ export default function pagination(coctails) {
   coctails.forEach(coctail => {
     partOfDrinks.push(coctail);
 
-    if (partOfDrinks.length === 9) {
-      paginationData[paginationDateKey] = [...partOfDrinks];
-      paginationDateKey += 1;
-      partOfDrinks = [];
+    if (window.screen.width < 768) {
+      if (partOfDrinks.length === 3) {
+        paginationData[paginationDateKey] = [...partOfDrinks];
+        paginationDateKey += 1;
+        partOfDrinks = [];
+      }
+    }
+
+    if (window.screen.width > 768) {
+      if (partOfDrinks.length === 6) {
+        paginationData[paginationDateKey] = [...partOfDrinks];
+        paginationDateKey += 1;
+        partOfDrinks = [];
+      }
+    }
+
+    if (window.screen.width > 1280) {
+      if (partOfDrinks.length === 9) {
+        paginationData[paginationDateKey] = [...partOfDrinks];
+        paginationDateKey += 1;
+        partOfDrinks = [];
+      }
     }
   });
 

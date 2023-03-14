@@ -8,12 +8,14 @@ import axios from 'axios';
 const searfchFormRef = document.querySelector('.header__search');
 const searchInputRef = document.querySelector('.header__input');
 
-const paginationBtnRef = document.querySelector('.pagination');
+const paginationBtnContainer = document.querySelector('.pagination');
 const STORAGE_KEY = 'coctail-data-state';
+
+paginationBtnContainer.style.display = 'none';
 let page = 1;
 
 searfchFormRef.addEventListener('submit', onSubmit);
-paginationBtnRef.addEventListener('click', changeCoctails);
+paginationBtnContainer.addEventListener('click', changeCoctails);
 
 async function searchFetch(name) {
   const url = `${base}search.php?s=${name}`;
@@ -27,6 +29,7 @@ async function searchFetch(name) {
 
 async function onSubmit(e) {
   e.preventDefault();
+  sessionStorage.removeItem(STORAGE_KEY);
   const { drinks } = await searchFetch(searchInputRef.value.trim());
 
   if (drinks === null) {
@@ -35,6 +38,10 @@ async function onSubmit(e) {
   }
   const coctailData = pagination(drinks);
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
+  const keys = Object.keys(coctailData);
+  if (keys.length > 1) {
+    paginationBtnContainer.style.display = 'flex';
+  }
 
   buildCard(coctailData[page]);
 }
@@ -46,10 +53,12 @@ function changeCoctails(e) {
     page = +e.target.textContent;
     buildCard(coctailData[page]);
   }
+
   if (e.target.classList.contains('next')) {
     page += 1;
     buildCard(coctailData[page]);
   }
+
   if (e.target.classList.contains('previous')) {
     page -= 1;
     buildCard(coctailData[page]);

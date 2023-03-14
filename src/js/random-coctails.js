@@ -1,8 +1,7 @@
-import axios from 'axios';
 import fetchData from './fetch-data';
 import renderCards from './render-cards';
 
-if (window.screen.width <= 767) {
+if (window.screen.width < 768) {
   for (let i = 1; i <= 3; i++) {
     fetchData('random.php').then(renderCards);
   }
