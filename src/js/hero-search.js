@@ -1,6 +1,6 @@
 import BASE_URL from './base-url';
-import renderCards from "./renderCards";
-import renderNotFind from "./renderOnNotFind";
+import renderCards from "./render-cards";
+import renderNotFind from "./render-on-not-found";
 
 import axios from 'axios';
 
@@ -24,9 +24,20 @@ async function onClick(event) {
     return;
   }
   renderCards(drinks);
+  onAddItems();
 }
 
 const alphabetItems = alphabetList.querySelectorAll('.alphabet-list-item');
 alphabetItems.forEach(item => {
   item.addEventListener('click', onClick);
 });
+
+// function onAddItems(){
+//   const galleryListRef = document.querySelector('.gallery__list');
+//   const { height: cardHeight } = galleryListRef.firstElementChild.getBoundingClientRect();
+  
+//   window.scrollBy({
+//           top: cardHeight * 5,
+//           behavior: "smooth",
+//   });
+// }
