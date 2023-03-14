@@ -6,3 +6,4 @@ import './js/favorites';
 import './js/auth';
 import './js/modals/modal-recipe';
 import './js/modals/modal-ingredient';
+import './js/hero-search';
