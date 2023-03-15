@@ -280,6 +280,7 @@
     & li {
         transition: color $transition, background-color $transition;
         height: 48px;
+
     }
     & a{
         display: inline-block;
@@ -293,4 +294,5 @@
 .header__menu-container a:focus {
     background-color: $accent-color;
     color: $white-color;
+    fill: $accent-color;
 }

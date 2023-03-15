@@ -29,10 +29,11 @@
         &:hover,
         &:focus{
             color: $accent-color;
+            fill: $accent-color;
         }
     }
     &__search{
-        margin-left: auto;
+        margin-left: 251px;
         position: relative;
     }
     
