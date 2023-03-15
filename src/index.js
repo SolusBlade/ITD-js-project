@@ -1,4 +1,4 @@
-// import './js/header-search';
+import './js/header-search';
 import './js/fetch-data';
 import './js/render-cards';
 import './js/random-coctails';
