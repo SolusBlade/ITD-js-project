@@ -2,6 +2,12 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 32px;
+  @include tablet_max {
+    padding-bottom: 20px;
+  }
+  @include tablet {
+    padding-bottom: 60px;
+  }
 }
 .numbers-container {
   display: flex;
