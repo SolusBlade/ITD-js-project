@@ -7,7 +7,6 @@ galleryRef.addEventListener('click', onBtnClick);
 
 function onBtnClick(event) {
     const targetBtn = event.target;
-    console.log(targetBtn.nodeName);
   if (targetBtn.dataset.favorite === 'cocktail') {
     const cocktailId = event.target.dataset.id;
     if(storage.cocktails.includes(cocktailId)){
