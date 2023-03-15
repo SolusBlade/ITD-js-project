@@ -3,19 +3,17 @@ export const refs = {
   backdrop: document.querySelector('.backdrop'),
   // backdropIngredient: document.querySelector('.backdrop.ingredient'),
   gallery: document.querySelector('.gallery'),
-  modalRecipeCloseBtn: document.querySelector('[data-modal-recipe-close]'),
+
   modalRecipeEl: document.querySelector('[data-modal-recipe]'),
+  modalRecipeCloseBtn: document.querySelector('[data-modal-recipe-close]'),
+  modalRecipeRenderEl: document.querySelector(
+    '.modal-recipe__render-container'
+  ),
   modalIngredientEl: document.querySelector('[data-modal-ingredient]'),
   modalIngredientCloseBtn: document.querySelector(
     '[data-modal-ingredient-close]'
   ),
-  modalRecipeRenderEl: document.querySelector(
-    '.modal-recipe__render-container'
-  ),
-  modalRecipeLinkList: document.querySelector(
-    '.modal-recipe__ingredients-list'
+  modalIngredientRenderEl: document.querySelector(
+    '.modal-ingredient__render-container'
   ),
 };
-// console.log('modalRecipeOpenBtns:', refs.modalRecipeOpenBtns);
-// data-modal-recipe-close
-// console.log('backdropRecipe:', backdropRecipe);
