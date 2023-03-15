@@ -16,14 +16,12 @@ import {
 const searfchFormRef = document.querySelector('.header__search');
 const searchInputRef = document.querySelector('.header__input');
 const numbersContainer = document.querySelector('.numbers-container');
-const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
-const keys = Object.keys(coctailDataParse);
 
 paginationContainer.style.display = 'none';
 
 searfchFormRef.addEventListener('submit', onSubmit);
-if(paginationBtnRef){
-  paginationBtnRef.addEventListener('click', changeCoctails);
+if (paginationContainer) {
+  paginationContainer.addEventListener('click', changeCoctails);
 }
 
 async function searchFetch(name) {
@@ -41,7 +39,21 @@ async function onSubmit(e) {
   galleryList.innerHTML = '';
   numbersContainer.innerHTML = '';
 
+  const { drinks } = await searchFetch(searchInputRef.value.trim());
+  if (drinks.length <= screenWidth()) {
+    paginationContainer.style.display = 'none';
+  }
+  if (drinks === null) {
+    paginationContainer.style.display = 'none';
+    buildNotFind();
+    return;
+  }
+
+  const coctailData = pagination(drinks);
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
   if (sessionStorage.getItem(STORAGE_KEY)) {
+    const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
+    const keys = Object.keys(coctailDataParse);
     const renderDots = keys.length > 3;
     for (let i = 1; i <= keys.length; i++) {
       renderBtn(i);
@@ -56,18 +68,6 @@ async function onSubmit(e) {
     paginationContainer.style.display = 'flex';
     numbersContainer.firstElementChild.classList.add('active');
   }
-
-  const { drinks } = await searchFetch(searchInputRef.value.trim());
-  if (drinks.length <= screenWidth()) {
-    paginationContainer.style.display = 'none';
-  }
-  if (drinks === null) {
-    paginationContainer.style.display = 'none';
-    buildNotFind();
-    return;
-  }
-  const coctailData = pagination(drinks);
-  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
 
   buildCard(coctailData[page]);
 }
