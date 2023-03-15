@@ -1,15 +1,16 @@
 const galleryRef = document.querySelector('.gallery .container');
 import * as icons from '../images/icons.svg';
 
-
-
-export default function renderCards(data) {
-  let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
+function crateGalleryList() {
   galleryRef.innerHTML = `
   <h2 class="gallery__title">Cocktails</h2>
   <ul class="gallery__list">
   </ul>
   `;
+}
+crateGalleryList();
+export default function renderCards(data) {
+let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
   const galleryListRef = document.querySelector('.gallery__list');
   let card = data
     .map(
@@ -64,14 +65,3 @@ export default function renderCards(data) {
 
   galleryListRef.innerHTML += card;
 }
-
-// {
-//   const svg = document.createElement('svg');
-//   svg.classList.add('empty__heart');
-//   svg.setAttribute('width', 21);
-//   svg.setAttribute('height', 19);
-//   const use = document.createElement('use');
-//   use.setAttribute('href', './images/icons.svg#icon-empty-heart');
-//   svg.append(use);
-//   galleryListRef.append(svg);
-// }
