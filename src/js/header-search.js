@@ -22,7 +22,9 @@ const keys = Object.keys(coctailDataParse);
 paginationContainer.style.display = 'none';
 
 searfchFormRef.addEventListener('submit', onSubmit);
-paginationContainer.addEventListener('click', changeCoctails);
+if(paginationBtnRef){
+  paginationBtnRef.addEventListener('click', changeCoctails);
+}
 
 async function searchFetch(name) {
   const url = `${base}search.php?s=${name}`;

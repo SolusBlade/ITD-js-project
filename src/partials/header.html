@@ -1,13 +1,156 @@
 <header>
   <div class="container header__container">
-    <a href="./index.html" class="header__logo">cocktails</a>
-    <nav class="header__nav">
-      <ul class="header__nav-list">
-        <li class="header__nav-item">
-          <a href="./index.html" class="header__nav-link">Home</a>
+    <a href="./index.html" class="header__logo">
+      <picture>
+        <source
+          srcset="./images/Logo.png 1x, ./images/Logox2.png 2x"
+          media="(min-width: 1280px)"
+        />
+        <source
+          srcset="./images/Logo-tab.png 1x, ./images/Logo-tab-x2.png 2x"
+          media="(min-width: 768px)"
+        />
+        <source
+          srcset="./images/Logo-mob.png 1x, ./images/Logo-mob-x2.png 2x"
+          media="(min-width: 220px)"
+        />
+        <img class="header__logo" src="./images/Logo-mob.png" alt="logo" />
+      </picture>
+    </a>
+
+    <div class="header__container-desckt">
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href="./index.html" class="header__nav-link">Home</a>
+          </li>
+          <li class="header__nav-item favorite">
+            <a href="" class="header__nav-link">Favorite</a>
+            <div class="header__menu-container">
+              <ul class="header__menu-block">
+                <li class="header__menu-item">
+                  <a href="./cocktails.html" class="header__menu-link"
+                    >Favorite cocktails</a
+                  >
+                </li>
+                <li class="header__menu-item">
+                  <a href="./ingredients.html" class="header__menu-link"
+                    >Favorite ingredients</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <form action="" class="header__search">
+        <input type="text" placeholder="Search" class="header__input" />
+        <button type="submit" class="header__search-btn">
+          <svg width="24" height="24" class="header__search-ico">
+            <use href="./images/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+      <button type="button" class="header__profile-btn">
+        <svg width="40" height="40" class="header__profile-ico">
+          <use href="./images/icons.svg#icon-profile"></use>
+        </svg>
+      </button>
+      <div class="header__theme-box header__theme-list">
+        <p class="header__theme-text header__theme-item header__theme-light">
+          Light
+        </p>
+        <div class="toggle">
+          <input
+            type="checkbox"
+            name="toggle"
+            class="header__theme-switch dark-mode-toggle toggle-button"
+          />
+          <label for="toggle-button" class="text"></label>
+        </div>
+        <p class="header__theme-text header__theme-dark header__theme-item">
+          Dark
+        </p>
+      </div>
+    </div>
+
+    <!-- ////// Tablet menu///// -->
+    <form action="" class="header__search tablet">
+      <input type="text" placeholder="Search" class="header__input" />
+      <button type="submit" class="header__search-btn">
+        <svg width="24" height="24" class="header__search-ico">
+          <use href="./images/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+
+    <!-- ///// Mobile menu ///// -->
+    <button
+      aria-expanded="false"
+      class="menu-toggle-open js-open-menu"
+      type="button"
+    >
+      <svg width="30" height="16">
+        <use class="header__menu" href="./images/icons.svg#icon-menu"></use>
+      </svg>
+    </button>
+  </div>
+
+  <div class="menu-container js-menu-container container" id="mobile-menu">
+    <button
+      aria-expanded="false"
+      class="menu-toggle js-close-menu"
+      type="button"
+    >
+      <svg width="32" height="32">
+        <use class="header__cross" href="./images/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="header__theme-box header__theme-list mobile">
+      <button type="button" class="header__profile-btn mob-icon">
+        <svg width="40" height="40" class="header__profile-ico">
+          <use href="./images/icons.svg#icon-profile"></use>
+        </svg>
+      </button>
+      <p class="header__theme-text header__theme-item header__theme-light">
+        Light
+      </p>
+      <div class="toggle-mobile">
+        <input
+          type="checkbox"
+          name="toggle"
+          class="header__theme-switch dark-mode-toggle toggle-button"
+        />
+        <label for="toggle-button" class="text"></label>
+      </div>
+      <p class="header__theme-text header__theme-dark header__theme-item">
+        Dark
+      </p>
+    </div>
+
+    <form action="" class="header__search mobile-form">
+      <input type="text" placeholder="Search" class="header__input" />
+      <button type="submit" class="header__search-btn">
+        <svg width="24" height="24" class="header__search-ico">
+          <use href="./images/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+
+    <nav>
+      <ul class="mobile-menu">
+        <li class="mobile-menu-item">
+          <a href="./index.html" class="header__nav-link mobile-menu-item-link"
+            >Home</a
+          >
         </li>
-        <li class="header__nav-item favorite">
-          <a href="" class="header__nav-link">Favorite</a>
+        <li class="header__nav-item favorite mobile-menu-item">
+          <a href="" class="header__nav-link mobile-menu-item-link"
+            >Favorite
+            <svg class="mobile-menu-icon" width="24" height="24">
+              <use href="./images/icons.svg#icon-arrow"></use>
+            </svg>
+          </a>
           <div class="header__menu-container">
             <ul class="header__menu-block">
               <li class="header__menu-item">
@@ -25,26 +168,5 @@
         </li>
       </ul>
     </nav>
-    <form action="" class="header__search">
-      <input type="text" placeholder="Search" class="header__input" />
-      <button type="submit" class="header__search-btn">
-        <svg width="24" height="24" class="header__search-ico">
-          <use href="./images/icons.svg#icon-search"></use>
-        </svg>
-      </button>
-    </form>
-    <button type="button" class="header__profile-btn">
-      <svg width="40" height="40" class="header__profile-ico">
-        <use href="./images/icons.svg#icon-profile"></use>
-      </svg>
-    </button>
-    <div class="header__theme-box header__theme-list">
-      <p class="header__theme-text header__theme-item header__theme-light">Light</p>
-      <div class="toggle">
-      <input type="checkbox" name="toggle" class="header__theme-switch dark-mode-toggle toggle-button" />
-       <label for="toggle-button" class="text"></label> 
-      </div>
-      <p class="header__theme-text header__theme-dark header__theme-item">Dark</p>
-    </div>
   </div>
 </header>
