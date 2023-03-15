@@ -1,9 +1,10 @@
 const galleryRef = document.querySelector('.gallery .container');
 import * as icons from '../images/icons.svg';
 
-let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
+
 
 export default function renderCards(data) {
+  let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
   galleryRef.innerHTML = `
   <h2 class="gallery__title">Cocktails</h2>
   <ul class="gallery__list">
