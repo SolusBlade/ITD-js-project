@@ -260,13 +260,19 @@
     & li {
         transition: color $transition, background-color $transition;
         height: 48px;
-        padding: 12px;
 
+    }
+    & a{
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        padding: 12px;
     }
 }
 
-.header__menu-container li:hover,
-.header__menu-container li:focus {
+.header__menu-container a:hover,
+.header__menu-container a:focus {
     background-color: $accent-color;
     color: $white-color;
+    fill: $accent-color;
 }
