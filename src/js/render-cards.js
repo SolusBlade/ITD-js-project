@@ -1,12 +1,15 @@
 const galleryRef = document.querySelector('.gallery .container');
 import * as icons from '../images/icons.svg';
 
-export default function renderCards(data) {
+function crateGalleryList() {
   galleryRef.innerHTML = `
   <h2 class="gallery__title">Cocktails</h2>
   <ul class="gallery__list">
   </ul>
   `;
+}
+crateGalleryList();
+export default function renderCards(data) {
   const galleryListRef = document.querySelector('.gallery__list');
   let card = data
     .map(
@@ -14,7 +17,7 @@ export default function renderCards(data) {
         `<li class="gallery__item">
         <div class="coctails__card">
           <div class="img_wrapper">
-            <img src="${item.strDrinkThumb}" alt=""/>
+            <img src="${item.strDrinkThumb}" alt="${item.strCategory}"/>
           </div>
           <div class="coctails__info">
             <h3 class="coctails__title">${item.strDrink}</h3>
@@ -35,14 +38,3 @@ export default function renderCards(data) {
 
   galleryListRef.innerHTML += card;
 }
-
-// {
-//   const svg = document.createElement('svg');
-//   svg.classList.add('empty__heart');
-//   svg.setAttribute('width', 21);
-//   svg.setAttribute('height', 19);
-//   const use = document.createElement('use');
-//   use.setAttribute('href', './images/icons.svg#icon-empty-heart');
-//   svg.append(use);
-//   galleryListRef.append(svg);
-// }

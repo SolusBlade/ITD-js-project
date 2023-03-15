@@ -1,19 +1,28 @@
+import axios from 'axios';
 import base from './base-url';
 import buildCard from './render-cards';
 import buildNotFind from './render-on-not-found';
 import pagination from './pagination';
-
-import axios from 'axios';
+import screenWidth from './random-coctails';
+import renderBtn from './renderPaginationBtn';
+import {
+  galleryList,
+  paginationContainer,
+  STORAGE_KEY,
+  changeCoctails,
+  page,
+} from './changeCoctails';
 
 const searfchFormRef = document.querySelector('.header__search');
 const searchInputRef = document.querySelector('.header__input');
+const numbersContainer = document.querySelector('.numbers-container');
+const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
+const keys = Object.keys(coctailDataParse);
 
-const paginationBtnRef = document.querySelector('.pagination');
-const STORAGE_KEY = 'coctail-data-state';
-let page = 1;
+paginationContainer.style.display = 'none';
 
 searfchFormRef.addEventListener('submit', onSubmit);
-paginationBtnRef.addEventListener('click', changeCoctails);
+paginationContainer.addEventListener('click', changeCoctails);
 
 async function searchFetch(name) {
   const url = `${base}search.php?s=${name}`;
@@ -27,9 +36,31 @@ async function searchFetch(name) {
 
 async function onSubmit(e) {
   e.preventDefault();
-  const { drinks } = await searchFetch(searchInputRef.value.trim());
+  galleryList.innerHTML = '';
+  numbersContainer.innerHTML = '';
 
+  if (sessionStorage.getItem(STORAGE_KEY)) {
+    const renderDots = keys.length > 3;
+    for (let i = 1; i <= keys.length; i++) {
+      renderBtn(i);
+      if (i === 3 && renderDots) {
+        renderBtn('...');
+        break;
+      }
+    }
+    if (keys.length > 4) {
+      renderBtn(keys.length);
+    }
+    paginationContainer.style.display = 'flex';
+    numbersContainer.firstElementChild.classList.add('active');
+  }
+
+  const { drinks } = await searchFetch(searchInputRef.value.trim());
+  if (drinks.length <= screenWidth()) {
+    paginationContainer.style.display = 'none';
+  }
   if (drinks === null) {
+    paginationContainer.style.display = 'none';
     buildNotFind();
     return;
   }
@@ -37,21 +68,4 @@ async function onSubmit(e) {
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
 
   buildCard(coctailData[page]);
-}
-
-function changeCoctails(e) {
-  const coctailData = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
-
-  if (e.target.classList.contains('numbers')) {
-    page = +e.target.textContent;
-    buildCard(coctailData[page]);
-  }
-  if (e.target.classList.contains('next')) {
-    page += 1;
-    buildCard(coctailData[page]);
-  }
-  if (e.target.classList.contains('previous')) {
-    page -= 1;
-    buildCard(coctailData[page]);
-  }
 }
