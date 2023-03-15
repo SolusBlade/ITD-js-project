@@ -13,14 +13,24 @@ import {
   page,
 } from './changeCoctails';
 
-const searfchFormRef = document.querySelector('.header__search');
+const searfchDeskFormRef = document.querySelector('.header__search');
+const searfchTabletFormRef = document.querySelector('.header__search.tablet');
+const searfchMobileFormRef = document.querySelector('.header__search.mobile-form');
 const searchInputRef = document.querySelector('.header__input');
 const numbersContainer = document.querySelector('.numbers-container');
 
-paginationContainer.style.display = 'none';
+searfchDeskFormRef.addEventListener('submit', onSubmit);
 
-searfchFormRef.addEventListener('submit', onSubmit);
+if(searfchTabletFormRef){
+  searfchTabletFormRef.addEventListener('submit', onSubmit);
+}
+
+if(searfchMobileFormRef){
+  searfchMobileFormRef.addEventListener('submit', onSubmit);
+}
+
 if (paginationContainer) {
+  paginationContainer.style.display = 'none';
   paginationContainer.addEventListener('click', changeCoctails);
 }
 
@@ -38,8 +48,8 @@ async function onSubmit(e) {
   e.preventDefault();
   galleryList.innerHTML = '';
   numbersContainer.innerHTML = '';
-
-  const { drinks } = await searchFetch(searchInputRef.value.trim());
+  console.log(e);
+  const { drinks } = await searchFetch(e.target[0].value.trim());
   if (drinks.length <= screenWidth()) {
     paginationContainer.style.display = 'none';
   }

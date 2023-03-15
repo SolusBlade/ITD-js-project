@@ -6,7 +6,7 @@ const listIngridient = document.querySelector('.favorite-ingredients__list');
 const buttonRemove = document.querySelector('.favorite-button__remove');
 
 if (listCocktails) {
-  buttonRemove.addEventListener('click', removeFromLocalStorege);
+  // buttonRemove.addEventListener('click', removeFromLocalStorege);
 }
 
 function renderListFavorites() {

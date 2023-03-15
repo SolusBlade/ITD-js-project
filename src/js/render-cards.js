@@ -2,11 +2,13 @@ const galleryRef = document.querySelector('.gallery .container');
 import * as icons from '../images/icons.svg';
 
 function crateGalleryList() {
-  galleryRef.innerHTML = `
-  <h2 class="gallery__title">Cocktails</h2>
-  <ul class="gallery__list">
-  </ul>
+  if(galleryRef){
+    galleryRef.innerHTML = `
+    <h2 class="gallery__title">Cocktails</h2>
+    <ul class="gallery__list">
+    </ul>
   `;
+  }
 }
 crateGalleryList();
 export default function renderCards(data) {

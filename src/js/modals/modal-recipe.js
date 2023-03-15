@@ -18,7 +18,9 @@ import { openModalIngredient } from './modal-ingredient';
 
 const { gallery, modalRecipeEl, modalRecipeCloseBtn } = refs;
 
-gallery.addEventListener('click', openModalRecipe);
+if(gallery){
+  gallery.addEventListener('click', openModalRecipe);
+}
 
 async function openModalRecipe(event) {
   if (event.target.dataset.type !== 'open-learn-more') {

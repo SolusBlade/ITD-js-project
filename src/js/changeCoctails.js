@@ -5,7 +5,9 @@ const galleryList = document.querySelector('.gallery__list');
 const STORAGE_KEY = 'coctail-data-state';
 
 let page = 1;
-paginationContainer.addEventListener('click', changeCoctails);
+if(paginationContainer){
+  paginationContainer.addEventListener('click', changeCoctails);
+}
 
 function changeCoctails(e) {
   const coctailData = JSON.parse(sessionStorage.getItem(STORAGE_KEY));

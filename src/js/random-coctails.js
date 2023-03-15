@@ -1,7 +1,9 @@
 import axios from 'axios';
 import fetchData from './fetch-data';
 import renderCards from './render-cards';
-
+import {
+  galleryList
+} from './changeCoctails';
 export default function screenWidth() {
   if (window.screen.width < 767) {
     return 3;
@@ -13,6 +15,9 @@ export default function screenWidth() {
     return 9;
   }
 }
-for (let i = 1; i <= screenWidth(); i++) {
-  fetchData('random.php').then(renderCards);
+if(galleryList){
+  for (let i = 1; i <= screenWidth(); i++) {
+    fetchData('random.php').then(renderCards);
+  }
 }
+
