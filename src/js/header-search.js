@@ -13,7 +13,9 @@ const STORAGE_KEY = 'coctail-data-state';
 let page = 1;
 
 searfchFormRef.addEventListener('submit', onSubmit);
-paginationBtnRef.addEventListener('click', changeCoctails);
+if(paginationBtnRef){
+  paginationBtnRef.addEventListener('click', changeCoctails);
+}
 
 async function searchFetch(name) {
   const url = `${base}search.php?s=${name}`;
