@@ -35,3 +35,7 @@
   border-radius: 4px;
   color: $btn-bg-color;
 }
+.active {
+  background: $btn-bg-color;
+  color: $pagination-btn-bg-color;
+}
