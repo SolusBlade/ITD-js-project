@@ -1,9 +1,9 @@
 import { refs } from '../config/refs';
 
-const { modalRecipeRenderEl } = refs;
+const { modalRecipeRenderEl, modalIngredientRenderEl } = refs;
 
-function renderRecipe(data) {
-  const { strDrink, strInstructions, strDrinkThumb } = data[0];
+function renderRecipe(drink) {
+  const { strDrink, strInstructions, strDrinkThumb } = drink;
 
   const markup = ` <h2 class="modal-recipe__title">${strDrink}</h2>
     <div class="modal-recipe__instructions-wrap">
@@ -23,19 +23,19 @@ function renderRecipe(data) {
       <h3 class="modal-recipe__ingredients-title">INGREDIENTS</h3>
       <p class="modal-recipe__ingredients-sub-title">Per cocktail</p>
       <ul class="modal-recipe__ingredients-list">${renderRecipeIngredients(
-        data[0]
+        drink
       )}
       </ul>
     </div>`;
   modalRecipeRenderEl.insertAdjacentHTML('beforeend', markup);
 }
 
-function renderRecipeIngredients(data) {
+function renderRecipeIngredients(drink) {
   let markup = '';
 
   for (let i = 1; i < 15; i += 1) {
-    let ingredient = data[`strIngredient${i}`];
-    let measure = data[`strMeasure${i}`];
+    let ingredient = drink[`strIngredient${i}`];
+    let measure = drink[`strMeasure${i}`] || '';
 
     if (!ingredient) break;
 
@@ -44,8 +44,47 @@ function renderRecipeIngredients(data) {
   return markup;
 }
 
-function clearRenderEl() {
-  modalRecipeRenderEl.replaceChildren();
+function renderIngredient(ingredient) {
+  const {
+    idIngredient,
+    strIngredient,
+    strDescription,
+    strType,
+    strAlcohol,
+    strABV,
+  } = ingredient;
+  const textCut = strDescription
+    ? strDescription.slice(1, strDescription.length)
+    : '-';
+  const alcohol = strAlcohol || 'None';
+  const abv = strABV || '-';
+  const markup = `<div class="modal-ingredient__img-thumb">
+      <img
+        class="modal-ingredient__img"
+        src="https://thecocktaildb.com/images/ingredients/${strIngredient}-Small.png"  alt="${strIngredient} photo"
+      /></div>
+  <div class="modal-ingredient__title-wrap"><h2 class="modal-ingredient__title">${strIngredient}</h2>
+    <p class="modal-ingredient__sub-title">${strType}</p></div>
+    <p class="modal-ingredient__text">
+      <span class="modal-ingredient__text--first">${strIngredient}</span> ${textCut}
+    </p>
+    <ul class="modal-ingredient__list">
+      <li class="modal-ingredient__item">Type: ${strType}</li>
+      <li class="modal-ingredient__item">Alcohol: ${alcohol}</li>
+      <li class="modal-ingredient__item">Alcohol by volume: ${abv}</li>
+    </ul>`;
+  modalIngredientRenderEl.insertAdjacentHTML('beforeend', markup);
 }
 
-export { renderRecipe, renderRecipeIngredients, clearRenderEl };
+function clearRenderEl(element) {
+  console.log('clearRenderEl -> element:', element);
+
+  element.replaceChildren();
+}
+
+export {
+  renderRecipe,
+  renderRecipeIngredients,
+  clearRenderEl,
+  renderIngredient,
+};
