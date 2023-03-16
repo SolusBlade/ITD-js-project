@@ -1,4 +1,20 @@
-// footer{
-//     height: 110px;
-//     background-color: $accent-color;
-// }
+footer {
+  height: 110px;
+  background-color: $accent-color;
+  text-align: center;
+  @include tablet_max {
+    margin-top: 20px;
+  }
+  @include tablet {
+    margin-top: 60px;
+  }
+}
+
+.footer__text {
+  padding-top: 40px;
+  color: $white-color;
+}
+
+.team__name {
+  color: $title-light-color;
+}
