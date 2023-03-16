@@ -46,8 +46,7 @@ function modalClose(element) {
   clearRenderEl(modalRecipeRenderEl);
   hideModal(element);
   isScrollModalClosed();
-
-  // modalRecipeCloseBtn.removeEventListener('click', modalRecipeClose);
+  document.removeEventListener('keydown', modalCloseOnEsc);
 }
 function closeOnBackdropClick(event) {
   event.target.classList.contains('backdrop-recipe') &&

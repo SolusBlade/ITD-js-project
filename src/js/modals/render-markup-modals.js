@@ -3,30 +3,39 @@ import { refs } from '../config/refs';
 const { modalRecipeRenderEl, modalIngredientRenderEl } = refs;
 
 function renderRecipe(drink) {
-  const { strDrink, strInstructions, strDrinkThumb } = drink;
+  const { idDrink, strDrink, strInstructions, strDrinkThumb } = drink;
 
-  const markup = ` <h2 class="modal-recipe__title">${strDrink}</h2>
-    <div class="modal-recipe__instructions-wrap">
+  const markup = `<div class="modal-recipe__top-wrap">
+  <div class="modal-recipe__title-ingred-wrap">
+  <h2 class="modal-recipe__title">${strDrink}</h2>
+
+      <div class="modal-recipe__ingredients-wrap">
+        <h3 class="modal-recipe__ingredients-title">INGREDIENTS</h3>
+        <p class="modal-recipe__ingredients-sub-title">Per cocktail</p>
+        <ul class="modal-recipe__ingredients-list">${renderRecipeIngredients(
+          drink
+        )}
+        </ul>
+      </div></div>
+
+       <div class="modal-recipe__img-thumb">
+        <img
+        class="modal-recipe__img"
+        src=${strDrinkThumb}
+        alt="${strDrink} photo"
+        />
+      </div>
+    </div>
+     <div class="modal-recipe__instructions-wrap">
       <h3 class="modal-recipe__instructions-title">INSTRUCTIONS</h3>
       <p class="modal-recipe__instructions-text">
         ${strInstructions}
       </p>
     </div>
-    <div class="modal-recipe__img-thumb">
-      <img
-        class="modal-recipe__img"
-        src=${strDrinkThumb}
-        alt="${strDrink} photo"
-      />
-    </div>
-    <div class="modal-recipe__ingredients-wrap">
-      <h3 class="modal-recipe__ingredients-title">INGREDIENTS</h3>
-      <p class="modal-recipe__ingredients-sub-title">Per cocktail</p>
-      <ul class="modal-recipe__ingredients-list">${renderRecipeIngredients(
-        drink
-      )}
-      </ul>
-    </div>`;
+    <button class="modal-recipe__btn" type="button" data-id="${idDrink}" data-favorite="cocktail">
+      Add to favorite
+    </button>`;
+
   modalRecipeRenderEl.insertAdjacentHTML('beforeend', markup);
 }
 
@@ -72,7 +81,10 @@ function renderIngredient(ingredient) {
       <li class="modal-ingredient__item">Type: ${strType}</li>
       <li class="modal-ingredient__item">Alcohol: ${alcohol}</li>
       <li class="modal-ingredient__item">Alcohol by volume: ${abv}</li>
-    </ul>`;
+    </ul>
+    <button class="modal-ingredient__btn" type="button" data-id="${idIngredient}" data-favorite="ingredient">
+      Add to favorite
+    </button>`;
   modalIngredientRenderEl.insertAdjacentHTML('beforeend', markup);
 }
 

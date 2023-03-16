@@ -15,17 +15,19 @@ import {
 
 const searfchDeskFormRef = document.querySelector('.header__search');
 const searfchTabletFormRef = document.querySelector('.header__search.tablet');
-const searfchMobileFormRef = document.querySelector('.header__search.mobile-form');
+const searfchMobileFormRef = document.querySelector(
+  '.header__search.mobile-form'
+);
 const searchInputRef = document.querySelector('.header__input');
 const numbersContainer = document.querySelector('.numbers-container');
 
 searfchDeskFormRef.addEventListener('submit', onSubmit);
 
-if(searfchTabletFormRef){
+if (searfchTabletFormRef) {
   searfchTabletFormRef.addEventListener('submit', onSubmit);
 }
 
-if(searfchMobileFormRef){
+if (searfchMobileFormRef) {
   searfchMobileFormRef.addEventListener('submit', onSubmit);
 }
 
@@ -48,37 +50,47 @@ async function onSubmit(e) {
   e.preventDefault();
   galleryList.innerHTML = '';
   numbersContainer.innerHTML = '';
+  sessionStorage.removeItem(STORAGE_KEY);
+
   const { drinks } = await searchFetch(e.target[0].value.trim());
-  e.target[0].value = "";
+  e.target[0].value = '';
+  const coctailData = pagination(drinks);
+
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
+
+  if (sessionStorage.getItem(STORAGE_KEY)) {
+    const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
+    const keys = Object.keys(coctailDataParse);
+
+    const renderDots = keys.length > 3;
+
+    for (let i = 1; i <= keys.length; i++) {
+      renderBtn(i);
+      if (i === 3 && renderDots) {
+        renderBtn('...');
+        document
+          .querySelector('.numbers-container')
+          .lastElementChild.classList.add('next');
+        break;
+      }
+    }
+    if (keys.length > 4) {
+      renderBtn(keys.length);
+    }
+
+    paginationContainer.style.display = 'flex';
+    numbersContainer.firstElementChild.classList.add('active');
+  }
+
   if (drinks === null) {
     paginationContainer.style.display = 'none';
     buildNotFind();
     return;
   }
+
   if (drinks.length <= screenWidth()) {
     paginationContainer.style.display = 'none';
   }
- 
 
-  const coctailData = pagination(drinks);
-  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
-  if (sessionStorage.getItem(STORAGE_KEY)) {
-    const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
-    const keys = Object.keys(coctailDataParse);
-    const renderDots = keys.length > 3;
-    for (let i = 1; i <= keys.length; i++) {
-      renderBtn(i);
-      // if (i === 3 && renderDots) {
-      //   renderBtn('...');
-      //   break;
-      // }
-    }
-    // if (keys.length > 4) {
-    //   renderBtn(keys.length);
-    // }
-    paginationContainer.style.display = 'flex';
-    numbersContainer.firstElementChild.classList.add('active');
-  }
   buildCard(coctailData[page]);
-  
 }

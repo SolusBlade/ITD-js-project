@@ -35,20 +35,11 @@ async function onClick(event) {
   event.preventDefault();
   galleryList.innerHTML = '';
   numbersContainer.innerHTML = '';
+  sessionStorage.removeItem(STORAGE_KEY);
 
   const letter = event.target.textContent;
   const { drinks } = await searchByLetter(letter);
-  if (drinks === null) {
-    paginationContainer.style.display = 'none';
-    buildNotFind();
-    return;
-  }
-  if (drinks.length <= screenWidth()) {
-    paginationContainer.style.display = 'none';
-  }
-  
-
-  const coctailData = pagination(drinks);
+    const coctailData = pagination(drinks);
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
   if (sessionStorage.getItem(STORAGE_KEY)) {
     const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
@@ -60,15 +51,26 @@ async function onClick(event) {
     paginationContainer.style.display = 'flex';
     numbersContainer.firstElementChild.classList.add('active');
   }
+
+  if (drinks === null) {
+    paginationContainer.style.display = 'none';
+    buildNotFind();
+    return;
+  }
+
+  if (drinks.length <= screenWidth()) {
+    paginationContainer.style.display = 'none';
+  }
   buildCard(coctailData[page]);
 }
 
-if(alphabetList){
+if (alphabetList) {
   const alphabetItems = document.querySelectorAll('.alphabet-list-item');
   alphabetItems.forEach(item => {
     item.addEventListener('click', onClick);
   });
 }
+
 if(mobAlphabetList){
   const alphabetItems = document.querySelectorAll('.mob-alphabet-list-item');
   alphabetItems.forEach(item => {

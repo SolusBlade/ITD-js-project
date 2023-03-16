@@ -5,7 +5,7 @@ const galleryList = document.querySelector('.gallery__list');
 const STORAGE_KEY = 'coctail-data-state';
 
 let page = 1;
-if(paginationContainer){
+if (paginationContainer) {
   paginationContainer.addEventListener('click', changeCoctails);
 }
 
@@ -13,7 +13,10 @@ function changeCoctails(e) {
   const coctailData = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
   const currentActiveBtn = document.querySelector('.active');
 
-  if (e.target.classList.contains('numbers')) {
+  if (
+    e.target.classList.contains('numbers') &&
+    !e.target.classList.contains('next')
+  ) {
     currentActiveBtn.classList.remove('active');
     e.target.classList.add('active');
     page = +e.target.textContent;

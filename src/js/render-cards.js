@@ -19,11 +19,9 @@ let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
     galleryImgRef.remove();
   }
   let card = data
-    .map(
-      item =>
-        {
-          if(cStorage && cStorage.includes(item.idDrink)){
-            return `
+    .map(item => {
+      if (cStorage && cStorage.includes(item.idDrink)) {
+        return `
               <li class="gallery__item">
               <div class="coctails__card">
                 <div class="img_wrapper">
@@ -43,9 +41,9 @@ let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
                 </div>
               </div>
             </li>
-            `
-          }
-          return `
+            `;
+      }
+      return `
               <li class="gallery__item">
               <div class="coctails__card">
                 <div class="img_wrapper">
@@ -66,7 +64,7 @@ let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
               </div>
             </li>
             `;
-      })
+    })
     .join('');
   galleryListRef.innerHTML += card;
 }
