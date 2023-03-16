@@ -139,6 +139,7 @@
         border-radius: 4px;
         width: 93px;
         height: 34px;
+        cursor: pointer;
     }
     @media screen and (min-width: 768px){
         display: none;
@@ -148,6 +149,56 @@
 .input-icon {
     fill: $accent-color;
 }
+.input-letter {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+}
 .hero-title-description{
     color:var(--change-title);
+}
+
+.hero-modal-search {
+    @media screen and (max-width: 767px) {
+        display: none;
+        position: relative;
+        width: 93px;
+        margin: 0 auto;
+        // padding: 10px 6.5px;
+    }
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+}
+.mob-alphabet-list {
+    position: absolute;
+    padding: 6.5px 10px;
+    height: 84px;
+    width: 100%;
+    border: 1px solid $accent-color;
+    border-radius: 4px;
+    right: 0;
+    top: 0;
+    overflow-y: auto;
+    scroll-snap-type: x proximity;
+}
+.mob-alphabet-list-item {
+    scroll-snap-align: start;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1.5;
+    color: $medium-grey-color;
+}
+.mob-alphabet-list-item:not(:last-child) {
+    margin-bottom: 13px;
+}
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 1.7px;
+    
+}
+::-webkit-scrollbar-thumb {
+    height: 34px;
+    border-radius: 4px;
+    border: 1.7px solid $medium-grey-color;
 }

@@ -13,6 +13,7 @@ import {
   page,
 } from './changeCoctails';
 
+const mobAlphabetList = document.querySelector('.mob-alphabet-list');
 const alphabetList = document.querySelector('.alphabet-list');
 const numbersContainer = document.querySelector('.numbers-container');
 
@@ -46,13 +47,12 @@ async function onClick(event) {
   }
 
   const coctailData = pagination(drinks);
+  
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
-
   if (sessionStorage.getItem(STORAGE_KEY)) {
     const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
     const keys = Object.keys(coctailDataParse);
     const renderDots = keys.length > 3;
-
     for (let i = 1; i <= keys.length; i++) {
       renderBtn(i);
     }
@@ -64,7 +64,6 @@ async function onClick(event) {
     paginationContainer.style.display = 'none';
   }
   buildCard(coctailData[page]);
-  // onAddItems();
 }
 
 if (alphabetList) {
@@ -74,12 +73,9 @@ if (alphabetList) {
   });
 }
 
-// function onAddItems(){
-//   const galleryListRef = document.querySelector('.gallery__list');
-//   const { height: cardHeight } = galleryListRef.firstElementChild.getBoundingClientRect();
-
-//   window.scrollBy({
-//           top: cardHeight * 5,
-//           behavior: "smooth",
-//   });
-// }
+if(mobAlphabetList){
+  const alphabetItems = document.querySelectorAll('.mob-alphabet-list-item');
+  alphabetItems.forEach(item => {
+    item.addEventListener('click', onClick);
+  });
+}
