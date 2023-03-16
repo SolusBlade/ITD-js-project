@@ -7,13 +7,22 @@ function onModalRecipeBtnClick(event) {
   if (storage.cocktails.includes(cocktailId)) {
     onRemoveBtn(targetBtn);
     storage.removeCocktail(cocktailId);
-    console.log('onModalRecipeBtnClick -> storage:', storage);
-
     return;
   }
   onAddBtn(targetBtn);
   storage.addCocktail(cocktailId);
-  console.log('onModalRecipeBtnClick -> storage:', storage);
+}
+
+function onModalIngredientBtnClick(event) {
+  const targetBtn = event.target;
+  const ingredientId = event.target.dataset.id;
+  if (storage.ingredients.includes(ingredientId)) {
+    onRemoveBtn(targetBtn);
+    storage.removeIngredient(ingredientId);
+    return;
+  }
+  onAddBtn(targetBtn);
+  storage.addIngredient(ingredientId);
 }
 
 function onAddBtn(button) {
@@ -22,4 +31,4 @@ function onAddBtn(button) {
 function onRemoveBtn(button) {
   button.textContent = `Add to favorites`;
 }
-export { onModalRecipeBtnClick };
+export { onModalRecipeBtnClick, onModalIngredientBtnClick };
