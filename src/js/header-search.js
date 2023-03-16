@@ -18,7 +18,6 @@ const searfchTabletFormRef = document.querySelector('.header__search.tablet');
 const searfchMobileFormRef = document.querySelector(
   '.header__search.mobile-form'
 );
-const searchInputRef = document.querySelector('.header__input');
 const numbersContainer = document.querySelector('.numbers-container');
 
 searfchDeskFormRef.addEventListener('submit', onSubmit);

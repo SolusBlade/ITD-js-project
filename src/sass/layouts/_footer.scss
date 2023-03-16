@@ -2,6 +2,7 @@ footer {
   height: 110px;
   background-color: $accent-color;
   text-align: center;
+
   @include tablet_max {
     margin-top: 20px;
   }

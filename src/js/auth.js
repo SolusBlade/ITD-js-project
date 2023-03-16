@@ -9,6 +9,7 @@ const profileMobileBtn = document.querySelector('.header__profile-btn.mob-icon')
 
 profileBtn.addEventListener("click", getIn);
 profileMobileBtn.addEventListener("click", getIn);
+onUpload();
 
 const firebaseConfig = {
   apiKey: "AIzaSyBEyxsja9Xmbt99yqe3GAmeQbiTjDFO9Ss",
@@ -74,39 +75,37 @@ async function getOut(){
     profileMobileBtn.addEventListener("click", getIn);
 }
 
-// async function onUpload(){
-//     const provider = new GoogleAuthProvider();
-    
-//     try{
-//         console.log(JSON.parse(localStorage.getItem("user")));
-//         const user = await signInWithPopup(JSON.parse(localStorage.getItem("user")), provider);
-//         profileBtn.innerHTML=`<img
-//             class="profile_img"
-//             src="${user._tokenResponse.photoUrl}"
-//             alt="profile_img"
-//             width="40"
-//         />
-//         `;
-//         profileMobileBtn.innerHTML=`<img
-//             class="profile_img"
-//             src="${user._tokenResponse.photoUrl}"
-//             alt="profile_img"
-//             width="40"
-//         />
-//         `;
-//         profileBtn.removeEventListener("click", getIn);
-//         profileBtn.addEventListener("click", getOut);
-//         profileMobileBtn.removeEventListener("click", getIn);
-//         profileMobileBtn.addEventListener("click", getOut);
-//     } catch(error) {
-//         console.log(error);
-//     }
-// }
+async function onUpload(){
+    try{
+        const user = JSON.parse(localStorage.getItem("user"));
+        // const user = await signInWithPopup(JSON.parse(localStorage.getItem("user")), provider);
+        profileBtn.innerHTML=`<img
+            class="profile_img"
+            src="${user._tokenResponse.photoUrl}"
+            alt="profile_img"
+            width="40"
+        />
+        `;
+        profileMobileBtn.innerHTML=`<img
+            class="profile_img"
+            src="${user._tokenResponse.photoUrl}"
+            alt="profile_img"
+            width="40"
+        />
+        `;
+        profileBtn.removeEventListener("click", getIn);
+        profileBtn.addEventListener("click", getOut);
+        profileMobileBtn.removeEventListener("click", getIn);
+        profileMobileBtn.addEventListener("click", getOut);
+    } catch(error) {
+        console.log(error);
+    }
+}
 
-// onUpload();
-// // if(){
+
+// if(){
     
-// // }
+// }
 
 
 function onLogIn(name){
