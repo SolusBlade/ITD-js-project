@@ -159,6 +159,7 @@
             font-size: 20px;
             line-height: calc(60/20);
             text-align: center;
+            color: var(--change-title);
         
             @media screen and (min-width: 768px) {
                 font-size: 24px;
@@ -282,10 +283,10 @@
     position: relative;
     display: inline-block;
 
-    &:hover .header__menu-container,
-    &:focus .header__menu-container {
-        display: flex;
-    }
+    // &:hover .header__menu-container,
+    // &:focus .header__menu-container {
+    //     display: flex;
+    // }
 
 }
 

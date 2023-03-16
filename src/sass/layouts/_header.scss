@@ -167,9 +167,7 @@ background-color: $white-color;
 }
 
 .toggle-button:checked {
-    // border: 0.6px solid #fff;
     border: 0.6px solid $white-color;
-    // background-color: #fd5103;
     background-color: $accent-color;
 }
 .dark-theme {
@@ -180,8 +178,6 @@ background-color: $white-color;
     --change-btn-light: #FCFCFC;
     --change-btn-dark: #FD5103;
     --change-title: #FCFCFC;
-    --test:#de0e0e;
-    --test-background: #e7e566;
     --modal-text:#BDBDBD;
     --modal-background:#202025;
     --background:#202025;
