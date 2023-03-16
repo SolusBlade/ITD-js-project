@@ -63,6 +63,11 @@ async function onClick(event) {
   if (drinks.length <= screenWidth()) {
     paginationContainer.style.display = 'none';
   }
+  
+  const galleryTitleRef = document.querySelector('.gallery__title');
+  galleryTitleRef.innerHTML = `
+    Searching results
+  `;
   buildCard(coctailData[page]);
 }
 
