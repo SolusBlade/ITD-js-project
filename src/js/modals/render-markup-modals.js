@@ -4,10 +4,7 @@ const { modalRecipeRenderEl, modalIngredientRenderEl } = refs;
 
 function renderRecipe(drink) {
   const { idDrink, strDrink, strInstructions, strDrinkThumb } = drink;
-  console.log('renderRecipe -> idDrink:', idDrink);
-
   let cStorage = JSON.parse(localStorage.getItem('favorite-cocktails'));
-  console.log('renderRecipe -> cStorage:', cStorage);
 
   if (cStorage && cStorage.includes(idDrink)) {
     const markup = `<div class="modal-recipe__top-wrap">
@@ -37,7 +34,7 @@ function renderRecipe(drink) {
       </p>
     </div>
     <button class="modal-recipe__btn" type="button" data-id="${idDrink}" data-favorite="cocktail">
-      Remove from favorite
+      Remove from favorites
     </button>`;
     modalRecipeRenderEl.insertAdjacentHTML('beforeend', markup);
     return;
@@ -69,7 +66,7 @@ function renderRecipe(drink) {
       </p>
     </div>
     <button class="modal-recipe__btn" type="button" data-id="${idDrink}" data-favorite="cocktail">
-      Add to favorite
+      Add to favorites
     </button>`;
   modalRecipeRenderEl.insertAdjacentHTML('beforeend', markup);
 }
@@ -102,6 +99,34 @@ function renderIngredient(ingredient) {
     : '-';
   const alcohol = strAlcohol || 'None';
   const abv = strABV || '-';
+
+  let iStorage = JSON.parse(localStorage.getItem('favorite-ingredients'));
+
+  if (iStorage && iStorage.includes(idIngredient)) {
+    const markup = `<div class="modal-ingredient__img-thumb">
+      <img
+        class="modal-ingredient__img"
+        src="https://thecocktaildb.com/images/ingredients/${strIngredient}-Small.png"  alt="${strIngredient} photo"
+      /></div>
+  <div class="modal-ingredient__title-wrap"><h2 class="modal-ingredient__title">${strIngredient}</h2>
+    <p class="modal-ingredient__sub-title">${strType}</p></div>
+    <p class="modal-ingredient__text">
+      <span class="modal-ingredient__text--first">${strIngredient}</span> ${textCut}
+    </p>
+    <ul class="modal-ingredient__list">
+      <li class="modal-ingredient__item">Type: ${strType}</li>
+      <li class="modal-ingredient__item">Alcohol: ${alcohol}</li>
+      <li class="modal-ingredient__item">Alcohol by volume: ${abv}</li>
+    </ul>
+    <button class="modal-ingredient__btn" type="button" data-id="${idIngredient}" data-favorite="ingredient">
+      Remove from favorites
+    </button>`;
+
+    modalIngredientRenderEl.insertAdjacentHTML('beforeend', markup);
+
+    return;
+  }
+
   const markup = `<div class="modal-ingredient__img-thumb">
       <img
         class="modal-ingredient__img"
@@ -118,7 +143,7 @@ function renderIngredient(ingredient) {
       <li class="modal-ingredient__item">Alcohol by volume: ${abv}</li>
     </ul>
     <button class="modal-ingredient__btn" type="button" data-id="${idIngredient}" data-favorite="ingredient">
-      Add to favorite
+      Add to favorites
     </button>`;
   modalIngredientRenderEl.insertAdjacentHTML('beforeend', markup);
 }

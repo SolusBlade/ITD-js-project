@@ -18,8 +18,6 @@ import {
 import { renderRecipe } from './render-markup-modals';
 import { openModalIngredient } from './modal-ingredient';
 import { onModalRecipeBtnClick } from './modal-favorites-control';
-import StorageClass from '../favorites-storage-class';
-const storage = new StorageClass();
 
 const { gallery, modalRecipeEl, modalRecipeCloseBtn } = refs;
 
@@ -38,7 +36,6 @@ async function openModalRecipe(event) {
   modalRecipeEl.addEventListener('click', closeOnBackdropClick);
   modalRecipeCloseBtn.addEventListener('click', modalCloseOnBtn);
 
-  // fetch info from gallery card id
   const drinkId = event.target.dataset.id;
 
   const { drinks } = await fetchDrinkByID(drinkId);
@@ -50,6 +47,7 @@ async function openModalRecipe(event) {
     '.modal-recipe__ingredients-list'
   );
   const buttonFavorites = document.querySelector('.modal-recipe__btn');
+
   ingredientsList.addEventListener('click', openModalIngredient);
   buttonFavorites.addEventListener('click', onModalRecipeBtnClick);
 }
