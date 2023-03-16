@@ -4,7 +4,44 @@ const { modalRecipeRenderEl, modalIngredientRenderEl } = refs;
 
 function renderRecipe(drink) {
   const { idDrink, strDrink, strInstructions, strDrinkThumb } = drink;
+  console.log('renderRecipe -> idDrink:', idDrink);
 
+  let cStorage = JSON.parse(localStorage.getItem('favorite-cocktails'));
+  console.log('renderRecipe -> cStorage:', cStorage);
+
+  if (cStorage && cStorage.includes(idDrink)) {
+    const markup = `<div class="modal-recipe__top-wrap">
+  <div class="modal-recipe__title-ingred-wrap">
+  <h2 class="modal-recipe__title">${strDrink}</h2>
+
+      <div class="modal-recipe__ingredients-wrap">
+        <h3 class="modal-recipe__ingredients-title">INGREDIENTS</h3>
+        <p class="modal-recipe__ingredients-sub-title">Per cocktail</p>
+        <ul class="modal-recipe__ingredients-list">${renderRecipeIngredients(
+          drink
+        )}
+        </ul>
+      </div></div>
+      <div class="modal-recipe__img-thumb">
+        <img
+        class="modal-recipe__img"
+        src=${strDrinkThumb}
+        alt="${strDrink} photo"
+        />
+      </div>
+    </div>
+     <div class="modal-recipe__instructions-wrap">
+      <h3 class="modal-recipe__instructions-title">INSTRUCTIONS</h3>
+      <p class="modal-recipe__instructions-text">
+        ${strInstructions}
+      </p>
+    </div>
+    <button class="modal-recipe__btn" type="button" data-id="${idDrink}" data-favorite="cocktail">
+      Remove from favorite
+    </button>`;
+    modalRecipeRenderEl.insertAdjacentHTML('beforeend', markup);
+    return;
+  }
   const markup = `<div class="modal-recipe__top-wrap">
   <div class="modal-recipe__title-ingred-wrap">
   <h2 class="modal-recipe__title">${strDrink}</h2>
@@ -17,8 +54,7 @@ function renderRecipe(drink) {
         )}
         </ul>
       </div></div>
-
-       <div class="modal-recipe__img-thumb">
+      <div class="modal-recipe__img-thumb">
         <img
         class="modal-recipe__img"
         src=${strDrinkThumb}
@@ -35,7 +71,6 @@ function renderRecipe(drink) {
     <button class="modal-recipe__btn" type="button" data-id="${idDrink}" data-favorite="cocktail">
       Add to favorite
     </button>`;
-
   modalRecipeRenderEl.insertAdjacentHTML('beforeend', markup);
 }
 
