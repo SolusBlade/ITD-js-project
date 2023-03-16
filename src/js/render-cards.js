@@ -1,16 +1,11 @@
 const galleryRef = document.querySelector('.gallery .container');
 import * as icons from '../images/icons.svg';
 
-function crateGalleryList() {
   if(galleryRef){
-    galleryRef.innerHTML = `
-    <h2 class="gallery__title">Cocktails</h2>
-    <ul class="gallery__list">
-    </ul>
+    galleryRef.innerHTML += `
+    <ul class="gallery__list"></ul>
   `;
   }
-}
-crateGalleryList();
 export default function renderCards(data) {
 let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
   const galleryListRef = document.querySelector('.gallery__list');
