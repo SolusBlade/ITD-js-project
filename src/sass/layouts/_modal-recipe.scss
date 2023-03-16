@@ -19,7 +19,6 @@
 }
 .modal-open {
   overflow: hidden;
-  // pointer-events: none;
 }
 
 .backdrop.is-hidden .modal-recipe {
@@ -32,17 +31,15 @@
 .modal-recipe {
   &__container {
     position: absolute;
-    top: 50%;
+    top: 5%;
     left: 50%;
     padding: 40px 20px;
-    // width: 320px;
-    // height: 956px;
     // background-color: $body-background-color;
     // background-color: var(--test-background);
     background-color: var(--modal-background);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
 
-    transform: scale(1) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, 0);
     transition: transform $transition;
 
     @media screen and (max-width: 320px) {
@@ -55,11 +52,12 @@
       width: 100%;
     }
     @media screen and (min-width: 768px) {
+      top: 50%;
+      padding: 0;
       max-width: 822px;
-      height: 600px;
+      min-height: 600px;
       width: 100%;
-      // display: flex;
-      position: relative;
+      transform: scale(1) translate(-50%, -50%);
     }
   }
 
@@ -74,9 +72,7 @@
     width: 32px;
     height: 32px;
     border: none;
-    // border-radius: 50%;
     background-color: transparent;
-    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
     cursor: pointer;
     fill: var(--change-title);
     transition: fill $transition, box-shadow $transition;
@@ -93,7 +89,20 @@
       fill: $btn-bg-color;
     }
   }
-
+  &__top-wrap {
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: 768px) {
+      flex-direction: row-reverse;
+      justify-content: start;
+    }
+  }
+  &__title-ingred-wrap {
+    @media screen and (min-width: 768px) {
+      margin-left: 32px;
+      margin-top: 40px;
+    }
+  }
   &__title {
     margin-bottom: 20px;
 
@@ -104,9 +113,7 @@
     color: var(--change-title);
 
     @media screen and (min-width: 768px) {
-      position: relative;
-      max-width: 400px;
-      left: 300px;
+      max-width: 450px;
     }
   }
 
@@ -115,54 +122,17 @@
     max-width: 280px;
 
     @media screen and (min-width: 768px) {
-      position: absolute;
       max-width: 288px;
       height: 320px;
-      top: 0;
-      left: 0;
+      margin-bottom: 0;
     }
   }
   &__ingredients-wrap {
     @media screen and (min-width: 768px) {
-      position: absolute;
       max-width: 500px;
-      // height: 320px;
       top: 105px;
       left: 320px;
     }
-  }
-  &__instructions-wrap {
-    @media screen and (min-width: 768px) {
-      position: absolute;
-      max-width: 743px;
-      // height: 320px;
-      top: 308px;
-      left: 28px;
-    }
-  }
-
-  &__instructions-title,
-  &__ingredients-title {
-    margin-bottom: 20px;
-
-    font-weight: 600;
-    font-size: 16px;
-    line-height: calc(26 / 16);
-    // color: $title-light-color;
-    color: var(--change-title);
-  }
-  &__instructions-text {
-    margin-bottom: 32px;
-  }
-  &__instructions-text,
-  &__ingredient {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: calc(28 / 16);
-    // color: $medium-grey-color;
-    color: var(--modal-text);
-    max-height: 140px;
-    overflow: overlay;
   }
   &__ingredients-title {
     margin-bottom: 8px;
@@ -178,12 +148,13 @@
   }
   &__ingredients-list {
     margin-bottom: 32px;
-    height: 160px;
-    
+
     overflow: overlay;
     @media screen and (min-width: 768px) {
-      
       width: 450px;
+      max-height: 160px;
+      margin-bottom: 0;
+      overflow: auto;
     }
   }
   &__ingredient {
@@ -204,6 +175,42 @@
       }
     }
   }
+
+  &__instructions-wrap {
+    @media screen and (min-width: 768px) {
+      max-width: 743px;
+      margin-left: 28px;
+    }
+  }
+  &__instructions-title {
+    margin-bottom: 20px;
+  }
+  &__instructions-title,
+  &__ingredients-title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: calc(26 / 16);
+    // color: $title-light-color;
+    color: var(--change-title);
+  }
+  &__instructions-text {
+    margin-bottom: 32px;
+    @media screen and (min-width: 768px) {
+      max-height: 130px;
+      overflow: auto;
+    }
+  }
+  &__instructions-text,
+  &__ingredient {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: calc(28 / 16);
+    // color: $medium-grey-color;
+    color: var(--modal-text);
+
+    // overflow: overlay;
+  }
+
   &__btn {
     padding: 12px 24px;
 
@@ -220,7 +227,7 @@
     background-color: $btn-bg-color;
     border-radius: 4px;
     transform: scale(1);
-    transform: background-color $transition, color $transition,
+    transition: background-color $transition, color $transition,
       box-shadow $transition, transform $transition;
 
     @media screen and (min-width: 768px) {
@@ -240,4 +247,3 @@
     }
   }
 }
-

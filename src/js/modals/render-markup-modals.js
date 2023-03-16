@@ -5,28 +5,34 @@ const { modalRecipeRenderEl, modalIngredientRenderEl } = refs;
 function renderRecipe(drink) {
   const { strDrink, strInstructions, strDrinkThumb } = drink;
 
-  const markup = ` <h2 class="modal-recipe__title">${strDrink}</h2>
-    <div class="modal-recipe__instructions-wrap">
+  const markup = `<div class="modal-recipe__top-wrap">
+  <div class="modal-recipe__title-ingred-wrap">
+  <h2 class="modal-recipe__title">${strDrink}</h2>
+
+      <div class="modal-recipe__ingredients-wrap">
+        <h3 class="modal-recipe__ingredients-title">INGREDIENTS</h3>
+        <p class="modal-recipe__ingredients-sub-title">Per cocktail</p>
+        <ul class="modal-recipe__ingredients-list">${renderRecipeIngredients(
+          drink
+        )}
+        </ul>
+      </div></div>
+
+       <div class="modal-recipe__img-thumb">
+        <img
+        class="modal-recipe__img"
+        src=${strDrinkThumb}
+        alt="${strDrink} photo"
+        />
+      </div>
+    </div>
+     <div class="modal-recipe__instructions-wrap">
       <h3 class="modal-recipe__instructions-title">INSTRUCTIONS</h3>
       <p class="modal-recipe__instructions-text">
         ${strInstructions}
       </p>
-    </div>
-    <div class="modal-recipe__img-thumb">
-      <img
-        class="modal-recipe__img"
-        src=${strDrinkThumb}
-        alt="${strDrink} photo"
-      />
-    </div>
-    <div class="modal-recipe__ingredients-wrap">
-      <h3 class="modal-recipe__ingredients-title">INGREDIENTS</h3>
-      <p class="modal-recipe__ingredients-sub-title">Per cocktail</p>
-      <ul class="modal-recipe__ingredients-list">${renderRecipeIngredients(
-        drink
-      )}
-      </ul>
     </div>`;
+
   modalRecipeRenderEl.insertAdjacentHTML('beforeend', markup);
 }
 
