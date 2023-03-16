@@ -2,6 +2,7 @@ import axios from 'axios';
 import FavoritesList from './favorites-storage-class';
 import BASE_URL from './base-url';
 import * as icons from '../images/icons.svg';
+import { openModalRecipe } from '../js/modals/modal-recipe';
 
 const storageData = new FavoritesList();
 const listCocktails = document.querySelector('.favorite-cocktails__list');
@@ -73,11 +74,11 @@ function createCardCoctail(data) {
   let card = data
     .map(item => {
       return `<li class="favorite-cocktails__item">
-            <img class="favorite-cocktails__item-img" src="${item.strDrinkThumb}" alt="" />
+            <img class="favorite-cocktails__item-img" src="${item.strDrinkThumb}" alt="${item.strCategory}" />
             <div class="favorite-cocktails__item-container">
               <h2 class="favorite-cocktails__item-title">${item.strDrink}</h2>
               <div class="favorite-button-container">
-                <button type="button" data-type="open-learn-more" class="favorite-button__learn-more">
+                <button type="button" data-type="open-learn-more" data-id="${item.idDrink}" class="favorite-button__learn-more">
                   Learn more
                 </button>
                 <button type="button" data-id="${item.idDrink}" class="favorite-button__remove">
@@ -94,4 +95,6 @@ function createCardCoctail(data) {
     .join('');
 
   listCocktails.insertAdjacentHTML('beforeend', card);
+  const buttonOpen = document.querySelector('[data-id]');
+  buttonOpen.addEventListener('click', openModalRecipe);
 }
