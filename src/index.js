@@ -8,5 +8,7 @@ import './js/auth';
 import './js/modals/modal-recipe';
 import './js/modals/modal-ingredient';
 import './js/hero-search';
+import './js/favorites-action';
 import './js/header-dark'
 import './js/favorites-action'
+
