@@ -13,6 +13,7 @@ import {
   page,
 } from './changeCoctails';
 
+const mobAlphabetList = document.querySelector('.mob-alphabet-list');
 const alphabetList = document.querySelector('.alphabet-list');
 const numbersContainer = document.querySelector('.numbers-container');
 
@@ -55,19 +56,11 @@ async function onClick(event) {
     const renderDots = keys.length > 3;
     for (let i = 1; i <= keys.length; i++) {
       renderBtn(i);
-      // if (i === 3 && renderDots) {
-      //   renderBtn('...');
-      //   break;
-      // }
     }
-    // if (keys.length > 4) {
-    //   renderBtn(keys.length);
-    // }
     paginationContainer.style.display = 'flex';
     numbersContainer.firstElementChild.classList.add('active');
   }
   buildCard(coctailData[page]);
-  // onAddItems();
 }
 
 if(alphabetList){
@@ -76,13 +69,9 @@ if(alphabetList){
     item.addEventListener('click', onClick);
   });
 }
-
-// function onAddItems(){
-//   const galleryListRef = document.querySelector('.gallery__list');
-//   const { height: cardHeight } = galleryListRef.firstElementChild.getBoundingClientRect();
-
-//   window.scrollBy({
-//           top: cardHeight * 5,
-//           behavior: "smooth",
-//   });
-// }
+if(mobAlphabetList){
+  const alphabetItems = document.querySelectorAll('.mob-alphabet-list-item');
+  alphabetItems.forEach(item => {
+    item.addEventListener('click', onClick);
+  });
+}

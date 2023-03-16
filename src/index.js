@@ -10,3 +10,4 @@ import './js/modals/modal-ingredient';
 import './js/hero-search';
 import './js/header-dark'
 import './js/favorites-action'
+import './js/modals/mob-hero-search';
