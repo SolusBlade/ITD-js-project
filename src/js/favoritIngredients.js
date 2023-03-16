@@ -53,7 +53,7 @@ async function apiForIdIngredient() {
 function onBtnClick(event) {
   const ingredientId = event.target.dataset.id;
   if (storageData.ingredients.includes(ingredientId)) {
-    storageData.removeIngredient(cocktailId);
+    storageData.removeIngredient(ingredientId);
   } else if (!storageData.ingredients) {
     renderListIngredient();
   }
@@ -66,15 +66,15 @@ function createCardIngridient(data) {
     .map(item => {
       return `<li class="favorite-ingredients__item">
             <h2 class="favorite-ingredients__item-title">${item.strDrink}</h2>
-            <p class="favorite-ingredients__item-text">Liqueur</p>
+            <p class="favorite-ingredients__item-text">${item.strIngredient}</p>
             <div class="favorite-button-container">
-              <button type="button" class="favorite-button__learn-more">
+              <button type="button" data-type="open-learn-more"  class="favorite-button__learn-more">
                 Learn more
               </button>
-              <button type="button" class="favorite-button__remove">
+              <button type="button" data-id="${item.idDrink}class="favorite-button__remove">
                 Remove
                 <svg class="favorite-button__icon" width="17" height="15">
-                  <use href="./images/icons.svg#icon-full-heart"></use>
+                  <use href="${icons}#icon-full-heart"></use>
                 </svg>
               </button>
             </div>
