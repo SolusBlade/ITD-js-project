@@ -49,10 +49,18 @@
 
 .coctails__card {
   border: 1px solid $accent-color;
-  border-radius: 4px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  &:hover {
+    box-shadow: -10px 10px 20px #acabab, 10px -10px 20px #fff;
+  }
 }
 .img_wrapper {
   width: 100%;
+}
+.coctail__image {
+  border-radius: 15px 15px 0 0;
+  display: block;
 }
 
 .coctails__info {

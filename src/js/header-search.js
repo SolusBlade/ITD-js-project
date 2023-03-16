@@ -67,7 +67,6 @@ async function onSubmit(e) {
   if (sessionStorage.getItem(STORAGE_KEY)) {
     const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
     const keys = Object.keys(coctailDataParse);
-    const renderDots = keys.length > 3;
 
     for (let i = 1; i <= keys.length; i++) {
       renderBtn(i);

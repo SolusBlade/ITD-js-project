@@ -25,7 +25,7 @@ export default function renderCards(data) {
               <li class="gallery__item">
               <div class="coctails__card">
                 <div class="img_wrapper">
-                  <img src="${item.strDrinkThumb}" alt=""/>
+                  <img class="coctail__image" src="${item.strDrinkThumb}" alt="${item.strCategory}"/>
                 </div>
                 <div class="coctails__info">
                   <h3 class="coctails__title">${item.strDrink}</h3>
@@ -47,7 +47,7 @@ export default function renderCards(data) {
               <li class="gallery__item">
               <div class="coctails__card">
                 <div class="img_wrapper">
-                  <img src="${item.strDrinkThumb}" alt=""/>
+                  <img class="coctail__image" src="${item.strDrinkThumb}" alt="${item.strCategory}"/>
                 </div>
                 <div class="coctails__info">
                   <h3 class="coctails__title">${item.strDrink}</h3>
