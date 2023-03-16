@@ -52,7 +52,8 @@
   border-radius: 15px;
   box-sizing: border-box;
   &:hover {
-    box-shadow: -10px 10px 20px #acabab, 10px -10px 20px #fff;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 #fd510366;
   }
 }
 .img_wrapper {
@@ -182,4 +183,18 @@
 .error_item {
   margin-left: auto;
   margin-right: auto;
+}
+
+@keyframes pulse {
+  0% {
+      box-shadow: 0 0 #fd510366
+  }
+
+  70% {
+      box-shadow: 0 0 0 20px #fd510300
+  }
+
+  to {
+      box-shadow: 0 0 #fd510300
+  }
 }

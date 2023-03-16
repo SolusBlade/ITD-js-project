@@ -18,23 +18,25 @@ if(mobAlphabetList){
   });
 }
 
-searchAlphabetInput.addEventListener('click', () => {
-  modalSearch.style.display = 'block';
-  searchAlphabetInput.style.backgroundColor = '#fd5103';
-  searchAlphabetInput.style.color = '#FCFCFC';
-  inputIcon.style.fill = '#FCFCFC';
-  if (searchAlphabetInput.classList.contains('ass')) {
-    modalSearch.style.display = 'none';
-  }
-  searchAlphabetInput.classList.toggle('ass');
-  window.addEventListener('click', function closeOnClick(event) {
-    if (!event.target.closest('.hero-modal-search') && !event.target.closest('.search-alphabet-input')) {
-        modalSearch.style.display = 'none';
-        searchAlphabetInput.style.backgroundColor = '';
-        searchAlphabetInput.style.color = '';
-        inputIcon.style.fill = '';
-        searchAlphabetInput.classList.toggle('ass');
-        window.removeEventListener('click', closeOnClick);
+if (searchAlphabetInput) {
+  searchAlphabetInput.addEventListener('click', () => {
+    modalSearch.style.display = 'block';
+    searchAlphabetInput.style.backgroundColor = '#fd5103';
+    searchAlphabetInput.style.color = '#FCFCFC';
+    inputIcon.style.fill = '#FCFCFC';
+    if (searchAlphabetInput.classList.contains('ass')) {
+      modalSearch.style.display = 'none';
     }
-  })
-});
+    searchAlphabetInput.classList.toggle('ass');
+    window.addEventListener('click', function closeOnClick(event) {
+      if (!event.target.closest('.hero-modal-search') && !event.target.closest('.search-alphabet-input')) {
+          modalSearch.style.display = 'none';
+          searchAlphabetInput.style.backgroundColor = '';
+          searchAlphabetInput.style.color = '';
+          inputIcon.style.fill = '';
+          searchAlphabetInput.classList.toggle('ass');
+          window.removeEventListener('click', closeOnClick);
+      }
+    })
+  });
+}
