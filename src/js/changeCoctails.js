@@ -13,10 +13,7 @@ function changeCoctails(e) {
   const coctailData = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
   const currentActiveBtn = document.querySelector('.active');
 
-  if (
-    e.target.classList.contains('numbers') &&
-    !e.target.classList.contains('next')
-  ) {
+  if (e.target.classList.contains('numbers')) {
     currentActiveBtn.classList.remove('active');
     e.target.classList.add('active');
     page = +e.target.textContent;

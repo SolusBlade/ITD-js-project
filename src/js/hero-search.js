@@ -38,8 +38,14 @@ async function onClick(event) {
 
   const letter = event.target.textContent;
   const { drinks } = await searchByLetter(letter);
-  const coctailData = pagination(drinks);
 
+  if (drinks === null) {
+    paginationContainer.style.display = 'none';
+    buildNotFind();
+    return;
+  }
+
+  const coctailData = pagination(drinks);
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
 
   if (sessionStorage.getItem(STORAGE_KEY)) {
@@ -49,32 +55,14 @@ async function onClick(event) {
 
     for (let i = 1; i <= keys.length; i++) {
       renderBtn(i);
-      if (i === 3 && renderDots) {
-        renderBtn('...');
-        document
-          .querySelector('.numbers-container')
-          .lastElementChild.classList.add('next');
-        break;
-      }
-    }
-
-    if (keys.length > 4) {
-      renderBtn(keys.length);
     }
     paginationContainer.style.display = 'flex';
     numbersContainer.firstElementChild.classList.add('active');
   }
 
-  if (drinks === null) {
-    paginationContainer.style.display = 'none';
-    buildNotFind();
-    return;
-  }
-
   if (drinks.length <= screenWidth()) {
     paginationContainer.style.display = 'none';
   }
-
   buildCard(coctailData[page]);
   // onAddItems();
 }

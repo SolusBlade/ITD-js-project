@@ -1,16 +1,13 @@
 .pagination {
   display: flex;
   justify-content: space-evenly;
+  // align-items: center;
   margin-top: 32px;
-  @include tablet_max {
-    padding-bottom: 20px;
-  }
-  @include tablet {
-    padding-bottom: 60px;
-  }
 }
 .numbers-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   @include tablet_max {
     gap: 8px;
   }

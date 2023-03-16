@@ -156,18 +156,22 @@
 .empty__heart {
   fill: $accent-color;
 }
-.gallery__title{
+.gallery__title {
   color: var(--change-title);
 }
-.gallery__list{
+.gallery__list {
   color: var(--change-title);
 }
-.error-img{
+.error-img {
   display: block;
   width: 345px;
   margin: 0 auto;
 
   @media screen and (max-width: 767px) {
     width: 280px;
+  }
 }
+.error_item {
+  margin-left: auto;
+  margin-right: auto;
 }

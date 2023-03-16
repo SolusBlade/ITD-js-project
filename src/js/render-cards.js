@@ -1,29 +1,27 @@
 const galleryRef = document.querySelector('.gallery .container');
 import * as icons from '../images/icons.svg';
 
-  if(galleryRef){
-    galleryRef.innerHTML += `
+if (galleryRef) {
+  galleryRef.innerHTML += `
     <ul class="gallery__list"></ul>
   `;
-  }
+}
 export default function renderCards(data) {
-let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
+  let cStorage = JSON.parse(localStorage.getItem('favorite-cocktails'));
   const galleryListRef = document.querySelector('.gallery__list');
   const galleryTitleRef = document.querySelector('.gallery__title');
   const galleryImgRef = document.querySelector('.error-img');
-  
+
   galleryTitleRef.innerHTML = `
     Cocktails
   `;
-  if(galleryImgRef){
+  if (galleryImgRef) {
     galleryImgRef.remove();
   }
   let card = data
-    .map(
-      item =>
-        {
-          if(cStorage && cStorage.includes(item.idDrink)){
-            return `
+    .map(item => {
+      if (cStorage && cStorage.includes(item.idDrink)) {
+        return `
               <li class="gallery__item">
               <div class="coctails__card">
                 <div class="img_wrapper">
@@ -43,9 +41,9 @@ let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
                 </div>
               </div>
             </li>
-            `
-          }
-          return `
+            `;
+      }
+      return `
               <li class="gallery__item">
               <div class="coctails__card">
                 <div class="img_wrapper">
@@ -66,7 +64,7 @@ let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
               </div>
             </li>
             `;
-      })
+    })
     .join('');
   galleryListRef.innerHTML += card;
 }
