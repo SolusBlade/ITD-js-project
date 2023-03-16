@@ -19,10 +19,19 @@ footer {
 
   letter-spacing: 0.02em;
 
-  padding-top: 30px;
+  // padding-top: 30px;
   color: $white-color;
 }
 
 .team__name {
   color: $title-light-color;
+}
+.footer__img-tumb {
+  width: 100px;
+  height: 100px;
+}
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
