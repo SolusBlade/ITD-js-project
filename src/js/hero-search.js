@@ -47,12 +47,11 @@ async function onClick(event) {
   }
 
   const coctailData = pagination(drinks);
-  
+
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
   if (sessionStorage.getItem(STORAGE_KEY)) {
     const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
     const keys = Object.keys(coctailDataParse);
-    const renderDots = keys.length > 3;
     for (let i = 1; i <= keys.length; i++) {
       renderBtn(i);
     }
@@ -73,7 +72,7 @@ if (alphabetList) {
   });
 }
 
-if(mobAlphabetList){
+if (mobAlphabetList) {
   const alphabetItems = document.querySelectorAll('.mob-alphabet-list-item');
   alphabetItems.forEach(item => {
     item.addEventListener('click', onClick);
