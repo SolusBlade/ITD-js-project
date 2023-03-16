@@ -1,24 +1,29 @@
 import { refs } from '../config/refs';
 import BASE_URL from '../base-url';
 import axios from 'axios';
+
 import {
   noScrollModalOpen,
-  isScrollModalClosed,
   modalCloseOnEsc,
   modalCloseOnBtn,
 } from './scroll-control-modals';
+
 import {
   showModal,
   closeOnBackdropClick,
   modalCloseOnEsc,
   modalCloseOnBtn,
 } from './modal-control';
+
 import { renderRecipe } from './render-markup-modals';
 import { openModalIngredient } from './modal-ingredient';
+import { onModalRecipeBtnClick } from './modal-favorites-control';
+import StorageClass from '../favorites-storage-class';
+const storage = new StorageClass();
 
 const { gallery, modalRecipeEl, modalRecipeCloseBtn } = refs;
 
-if(gallery){
+if (gallery) {
   gallery.addEventListener('click', openModalRecipe);
 }
 
@@ -44,7 +49,9 @@ async function openModalRecipe(event) {
   const ingredientsList = document.querySelector(
     '.modal-recipe__ingredients-list'
   );
+  const buttonFavorites = document.querySelector('.modal-recipe__btn');
   ingredientsList.addEventListener('click', openModalIngredient);
+  buttonFavorites.addEventListener('click', onModalRecipeBtnClick);
 }
 
 async function fetchDrinkByID(drinkId) {
