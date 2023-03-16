@@ -8,6 +8,8 @@ const storageData = new FavoritesList();
 const listCocktails = document.querySelector('.favorite-cocktails__list');
 const galeryFavorits = document.querySelector('.favorite-cocktails');
 galeryFavorits.addEventListener('click', onBtnClick);
+const buttonOpen = document.querySelector('.favorite-cocktails__list');
+buttonOpen.addEventListener('click', openModalRecipe);
 
 // Пустий список//
 
@@ -58,7 +60,7 @@ function onBtnClick(event) {
   if (storageData.cocktails.includes(cocktailId))
     storageData.removeCocktail(cocktailId);
   document
-    .querySelector(`[data-id = '${cocktailId}']`)
+    .querySelector(`[data-id='${cocktailId}']`)
     .closest('.favorite-cocktails__item')
     .remove();
   if (storageData.cocktails.length === 0) {
@@ -95,6 +97,4 @@ function createCardCoctail(data) {
     .join('');
 
   listCocktails.insertAdjacentHTML('beforeend', card);
-  const buttonOpen = document.querySelector('[data-id]');
-  buttonOpen.addEventListener('click', openModalRecipe);
 }

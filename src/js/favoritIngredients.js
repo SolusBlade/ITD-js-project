@@ -9,6 +9,8 @@ const storageData = new FavoritesList();
 const listIngridient = document.querySelector('.favorite-ingredients__list');
 const galleryFavoritsIng = document.querySelector('.favorite-ingredients');
 galleryFavoritsIng.addEventListener('click', onBtnClick);
+const buttonOpen = document.querySelector('.favorite-ingredients__list');
+buttonOpen.addEventListener('click', openModalIngredient);
 
 // Пустий список//
 
@@ -77,7 +79,7 @@ function createCardIngridient(data) {
             <h2 class="favorite-ingredients__item-title">${item.strIngredient}</h2>
             <p class="favorite-ingredients__item-text">${item.strType}</p>
             <div class="favorite-button-container">
-              <button type="button"  data-type = "open-ingredient" data-name="${item.strIngredient}" class="favorite-button__learn-more">
+              <button type="button"  data-type="open-ingredient" data-name="${item.strIngredient}" class="favorite-button__learn-more">
                 Learn more
               </button>
               <button type="button" data-id="${item.idIngredient}" class="favorite-button__remove">
@@ -92,6 +94,4 @@ function createCardIngridient(data) {
     })
     .join('');
   listIngridient.insertAdjacentHTML('beforeend', card);
-  const buttonOpen = document.querySelector('[data-name]');
-  buttonOpen.addEventListener('click', openModalIngredient);
 }
