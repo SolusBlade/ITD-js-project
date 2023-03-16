@@ -1,19 +1,23 @@
 import axios from 'axios';
 import fetchData from './fetch-data';
 import renderCards from './render-cards';
+import {
+  galleryList
+} from './changeCoctails';
+export default function screenWidth() {
+  if (window.screen.width < 767) {
+    return 3;
+  }
+  if (window.screen.width >= 768 && window.screen.width < 1280) {
+    return 6;
+  }
+  if (window.screen.width > 1280) {
+    return 9;
+  }
+}
+if(galleryList){
+  for (let i = 1; i <= screenWidth(); i++) {
+    fetchData('random.php').then(renderCards);
+  }
+}
 
-if (window.screen.width <= 767) {
-  for (let i = 1; i <= 3; i++) {
-    fetchData('random.php').then(renderCards);
-  }
-}
-if (window.screen.width > 768 && window.screen.width <= 1279) {
-  for (let i = 1; i <= 6; i++) {
-    fetchData('random.php').then(renderCards);
-  }
-}
-if (window.screen.width > 1280) {
-  for (let i = 1; i <= 9; i++) {
-    fetchData('random.php').then(renderCards);
-  }
-}

@@ -1,20 +1,39 @@
+import axios from 'axios';
 import base from './base-url';
 import buildCard from './render-cards';
 import buildNotFind from './render-on-not-found';
 import pagination from './pagination';
+import screenWidth from './random-coctails';
+import renderBtn from './renderPaginationBtn';
+import {
+  galleryList,
+  paginationContainer,
+  STORAGE_KEY,
+  changeCoctails,
+  page,
+} from './changeCoctails';
 
-import axios from 'axios';
-
-const searfchFormRef = document.querySelector('.header__search');
+const searfchDeskFormRef = document.querySelector('.header__search');
+const searfchTabletFormRef = document.querySelector('.header__search.tablet');
+const searfchMobileFormRef = document.querySelector(
+  '.header__search.mobile-form'
+);
 const searchInputRef = document.querySelector('.header__input');
+const numbersContainer = document.querySelector('.numbers-container');
 
-const paginationBtnRef = document.querySelector('.pagination');
-const STORAGE_KEY = 'coctail-data-state';
-let page = 1;
+searfchDeskFormRef.addEventListener('submit', onSubmit);
 
-searfchFormRef.addEventListener('submit', onSubmit);
-if(paginationBtnRef){
-  paginationBtnRef.addEventListener('click', changeCoctails);
+if (searfchTabletFormRef) {
+  searfchTabletFormRef.addEventListener('submit', onSubmit);
+}
+
+if (searfchMobileFormRef) {
+  searfchMobileFormRef.addEventListener('submit', onSubmit);
+}
+
+if (paginationContainer) {
+  paginationContainer.style.display = 'none';
+  paginationContainer.addEventListener('click', changeCoctails);
 }
 
 async function searchFetch(name) {
@@ -29,31 +48,49 @@ async function searchFetch(name) {
 
 async function onSubmit(e) {
   e.preventDefault();
-  const { drinks } = await searchFetch(searchInputRef.value.trim());
+  galleryList.innerHTML = '';
+  numbersContainer.innerHTML = '';
+  sessionStorage.removeItem(STORAGE_KEY);
+
+  const { drinks } = await searchFetch(e.target[0].value.trim());
+  e.target[0].value = '';
+  const coctailData = pagination(drinks);
+
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
+
+  if (sessionStorage.getItem(STORAGE_KEY)) {
+    const coctailDataParse = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
+    const keys = Object.keys(coctailDataParse);
+
+    const renderDots = keys.length > 3;
+
+    for (let i = 1; i <= keys.length; i++) {
+      renderBtn(i);
+      if (i === 3 && renderDots) {
+        renderBtn('...');
+        document
+          .querySelector('.numbers-container')
+          .lastElementChild.classList.add('next');
+        break;
+      }
+    }
+    if (keys.length > 4) {
+      renderBtn(keys.length);
+    }
+
+    paginationContainer.style.display = 'flex';
+    numbersContainer.firstElementChild.classList.add('active');
+  }
 
   if (drinks === null) {
+    paginationContainer.style.display = 'none';
     buildNotFind();
     return;
   }
-  const coctailData = pagination(drinks);
-  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
+
+  if (drinks.length <= screenWidth()) {
+    paginationContainer.style.display = 'none';
+  }
 
   buildCard(coctailData[page]);
-}
-
-function changeCoctails(e) {
-  const coctailData = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
-
-  if (e.target.classList.contains('numbers')) {
-    page = +e.target.textContent;
-    buildCard(coctailData[page]);
-  }
-  if (e.target.classList.contains('next')) {
-    page += 1;
-    buildCard(coctailData[page]);
-  }
-  if (e.target.classList.contains('previous')) {
-    page -= 1;
-    buildCard(coctailData[page]);
-  }
 }

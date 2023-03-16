@@ -3,11 +3,13 @@ import StorageClass from './favorites-storage-class';
 const storage = new StorageClass();
 
 const galleryRef = document.querySelector('.gallery');
-galleryRef.addEventListener('click', onBtnClick);
+if(galleryRef){
+    galleryRef.addEventListener('click', onBtnClick);
+}
+
 
 function onBtnClick(event) {
     const targetBtn = event.target;
-    console.log(targetBtn.nodeName);
   if (targetBtn.dataset.favorite === 'cocktail') {
     const cocktailId = event.target.dataset.id;
     if(storage.cocktails.includes(cocktailId)){
@@ -18,7 +20,6 @@ function onBtnClick(event) {
     onAddBtn(targetBtn);
     storage.addCocktail(cocktailId);
   }
-  
 }
 
 function onAddBtn(e){

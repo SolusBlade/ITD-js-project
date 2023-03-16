@@ -69,9 +69,10 @@
           <input
             type="checkbox"
             name="toggle"
+            id="togle-desktop"
             class="header__theme-switch dark-mode-toggle toggle-button"
           />
-          <label for="toggle-button" class="text"></label>
+          <label for="togle-desktop" class="text"></label>
         </div>
         <p class="header__theme-text header__theme-dark header__theme-item">
           Dark
@@ -127,6 +128,23 @@
       </svg>
     </button>
     <div class="header__theme-box header__theme-list mobile">
+      <a href="./index.html" class="header__logo tablet">
+        <picture>
+          <source
+            srcset="./images/Logo.png 1x, ./images/Logox2.png 2x"
+            media="(min-width: 1280px)"
+          />
+          <source
+            srcset="./images/Logo-tab.png 1x, ./images/Logo-tab-x2.png 2x"
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="./images/Logo-mob.png 1x, ./images/Logo-mob-x2.png 2x"
+            media="(min-width: 220px)"
+          />
+          <img class="header__logo" src="./images/Logo-mob.png" alt="logo" />
+        </picture>
+      </a>
       <button type="button" class="header__profile-btn mob-icon">
         <svg width="40" height="40" class="header__profile-ico">
           <use href="./images/icons.svg#icon-profile"></use>
@@ -139,9 +157,10 @@
         <input
           type="checkbox"
           name="toggle"
+          id="toggle-mobile"
           class="header__theme-switch dark-mode-toggle toggle-button"
         />
-        <label for="toggle-button" class="text"></label>
+        <label for="toggle-mobile" class="text"></label>
       </div>
       <p class="header__theme-text header__theme-dark header__theme-item">
         Dark
