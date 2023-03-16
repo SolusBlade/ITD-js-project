@@ -75,9 +75,10 @@
     height: 32px;
     border: none;
     // border-radius: 50%;
-    background-color: $body-background-color;
+    background-color: transparent;
     // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
     cursor: pointer;
+    fill: var(--change-title);
     transition: fill $transition, box-shadow $transition;
 
     @media screen and (min-width: 768px) {
@@ -133,7 +134,7 @@
   &__instructions-wrap {
     @media screen and (min-width: 768px) {
       position: absolute;
-      max-width: 615px;
+      max-width: 743px;
       // height: 320px;
       top: 308px;
       left: 28px;
@@ -160,6 +161,8 @@
     line-height: calc(28 / 16);
     // color: $medium-grey-color;
     color: var(--modal-text);
+    max-height: 140px;
+    overflow: overlay;
   }
   &__ingredients-title {
     margin-bottom: 8px;
@@ -175,6 +178,13 @@
   }
   &__ingredients-list {
     margin-bottom: 32px;
+    height: 160px;
+    
+    overflow: overlay;
+    @media screen and (min-width: 768px) {
+      
+      width: 450px;
+    }
   }
   &__ingredient {
     line-height: calc(26 / 16);
@@ -183,13 +193,14 @@
     transition: color $transition;
     &::before {
       content: '✶ ';
-      color: $dark-bg-color;
+      transition: color $transition;
+      color: var(--modal-text);
     }
     &:hover {
       cursor: pointer;
       color: $accent-color;
       &::before {
-        color: inherit;
+        color: $accent-color;
       }
     }
   }

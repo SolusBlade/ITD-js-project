@@ -77,8 +77,6 @@ function renderIngredient(ingredient) {
 }
 
 function clearRenderEl(element) {
-  console.log('clearRenderEl -> element:', element);
-
   element.replaceChildren();
 }
 

@@ -55,18 +55,17 @@ async function onClick(event) {
     const renderDots = keys.length > 3;
     for (let i = 1; i <= keys.length; i++) {
       renderBtn(i);
-      if (i === 3 && renderDots) {
-        renderBtn('...');
-        break;
-      }
+      // if (i === 3 && renderDots) {
+      //   renderBtn('...');
+      //   break;
+      // }
     }
-    if (keys.length > 4) {
-      renderBtn(keys.length);
-    }
+    // if (keys.length > 4) {
+    //   renderBtn(keys.length);
+    // }
     paginationContainer.style.display = 'flex';
     numbersContainer.firstElementChild.classList.add('active');
   }
-
   buildCard(coctailData[page]);
   // onAddItems();
 }

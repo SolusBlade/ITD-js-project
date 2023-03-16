@@ -19,7 +19,7 @@ export default function pagination(coctails) {
       }
     }
 
-    if (window.screen.width >= 768) {
+    if (window.screen.width >= 768 && window.screen.width < 1280) {
       if (partOfDrinks.length === 6) {
         paginationData[paginationDateKey] = [...partOfDrinks];
         paginationDateKey += 1;
@@ -27,7 +27,7 @@ export default function pagination(coctails) {
       }
     }
 
-    if (window.screen.width > 1280) {
+    if (window.screen.width >= 1280) {
       if (partOfDrinks.length === 9) {
         paginationData[paginationDateKey] = [...partOfDrinks];
         paginationDateKey += 1;

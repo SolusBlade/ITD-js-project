@@ -20,7 +20,6 @@ function onBtnClick(event) {
     onAddBtn(targetBtn);
     storage.addCocktail(cocktailId);
   }
-  
 }
 
 function onAddBtn(e){

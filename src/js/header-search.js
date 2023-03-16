@@ -49,6 +49,7 @@ async function onSubmit(e) {
   galleryList.innerHTML = '';
   numbersContainer.innerHTML = '';
   const { drinks } = await searchFetch(e.target[0].value.trim());
+  e.target[0].value = "";
   if (drinks === null) {
     paginationContainer.style.display = 'none';
     buildNotFind();
@@ -67,17 +68,17 @@ async function onSubmit(e) {
     const renderDots = keys.length > 3;
     for (let i = 1; i <= keys.length; i++) {
       renderBtn(i);
-      if (i === 3 && renderDots) {
-        renderBtn('...');
-        break;
-      }
+      // if (i === 3 && renderDots) {
+      //   renderBtn('...');
+      //   break;
+      // }
     }
-    if (keys.length > 4) {
-      renderBtn(keys.length);
-    }
+    // if (keys.length > 4) {
+    //   renderBtn(keys.length);
+    // }
     paginationContainer.style.display = 'flex';
     numbersContainer.firstElementChild.classList.add('active');
   }
-
   buildCard(coctailData[page]);
+  
 }
