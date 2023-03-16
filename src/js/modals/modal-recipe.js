@@ -58,7 +58,6 @@ async function fetchDrinkByID(drinkId) {
     const { data } = await axios.get(`${url}`);
     return data;
   } catch ({ response }) {
-    console.log('fetchDrinkByID -> response:', response);
 
     return response;
   }
