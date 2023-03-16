@@ -98,7 +98,7 @@ async function onUpload(){
         profileMobileBtn.removeEventListener("click", getIn);
         profileMobileBtn.addEventListener("click", getOut);
     } catch(error) {
-        console.log(error);
+
     }
 }
 
