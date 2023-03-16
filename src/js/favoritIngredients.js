@@ -2,10 +2,15 @@ import axios from 'axios';
 import FavoritesList from './favorites-storage-class';
 import BASE_URL from './base-url';
 import * as icons from '../images/icons.svg';
+import { openModalIngredient } from '../js/modals/modal-ingredient';
 
 const storageData = new FavoritesList();
 
 const listIngridient = document.querySelector('.favorite-ingredients__list');
+const galleryFavoritsIng = document.querySelector('.favorite-ingredients');
+galleryFavoritsIng.addEventListener('click', onBtnClick);
+const buttonOpen = document.querySelector('.favorite-ingredients__list');
+buttonOpen.addEventListener('click', openModalIngredient);
 
 // Пустий список//
 
@@ -20,8 +25,8 @@ function renderListIngredient() {
 //Запит API//
 async function fetchDataCoctail(id) {
   try {
-    const { data } = await axios.get(`${BASE_URL}lookup.php?i=${id}`);
-    return data.drinks[0];
+    const { data } = await axios.get(`${BASE_URL}lookup.php?iid=${id}`);
+    return data.ingredients[0];
   } catch (error) {
     console.log(error);
   }
@@ -54,10 +59,16 @@ function onBtnClick(event) {
   const ingredientId = event.target.dataset.id;
   if (storageData.ingredients.includes(ingredientId)) {
     storageData.removeIngredient(ingredientId);
-  } else if (!storageData.ingredients) {
-    renderListIngredient();
+    document
+      .querySelector(`[data-id = '${ingredientId}']`)
+      .closest('.favorite-ingredients__item')
+      .remove();
+    if (storageData.ingredients.length === 0) {
+      renderListIngredient();
+      galleryFavoritsIng.removeEventListener('click', onBtnClick);
+    }
+    return;
   }
-  return;
 }
 //Рендер картки//
 
@@ -65,13 +76,13 @@ function createCardIngridient(data) {
   let card = data
     .map(item => {
       return `<li class="favorite-ingredients__item">
-            <h2 class="favorite-ingredients__item-title">${item.strDrink}</h2>
-            <p class="favorite-ingredients__item-text">${item.strIngredient}</p>
+            <h2 class="favorite-ingredients__item-title">${item.strIngredient}</h2>
+            <p class="favorite-ingredients__item-text">${item.strType}</p>
             <div class="favorite-button-container">
-              <button type="button" data-type="open-learn-more"  class="favorite-button__learn-more">
+              <button type="button"  data-type="open-ingredient" data-name="${item.strIngredient}" class="favorite-button__learn-more">
                 Learn more
               </button>
-              <button type="button" data-id="${item.idDrink}class="favorite-button__remove">
+              <button type="button" data-id="${item.idIngredient}" class="favorite-button__remove">
                 Remove
                 <svg class="favorite-button__icon" width="17" height="15">
                   <use href="${icons}#icon-full-heart"></use>
@@ -83,6 +94,4 @@ function createCardIngridient(data) {
     })
     .join('');
   listIngridient.insertAdjacentHTML('beforeend', card);
-  const galleryFavorits = document.querySelector('.favorite-cocktails');
-  galleryFavorits.addEventListener('click', onBtnClick);
 }

@@ -62,4 +62,5 @@ async function fetchDrinkByID(drinkId) {
     return response;
   }
 }
+
 export { openModalRecipe };
