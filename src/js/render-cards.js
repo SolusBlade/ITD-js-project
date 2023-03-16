@@ -1,10 +1,8 @@
 const galleryRef = document.querySelector('.gallery .container');
 import * as icons from '../images/icons.svg';
 
-
-
 export default function renderCards(data) {
-  let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
+  let cStorage = JSON.parse(localStorage.getItem('favorite-cocktails'));
   galleryRef.innerHTML = `
   <h2 class="gallery__title">Cocktails</h2>
   <ul class="gallery__list">
@@ -12,11 +10,9 @@ export default function renderCards(data) {
   `;
   const galleryListRef = document.querySelector('.gallery__list');
   let card = data
-    .map(
-      item =>
-        {
-          if(cStorage && cStorage.includes(item.idDrink)){
-            return `
+    .map(item => {
+      if (cStorage && cStorage.includes(item.idDrink)) {
+        return `
               <li class="gallery__item">
               <div class="coctails__card">
                 <div class="img_wrapper">
@@ -36,9 +32,9 @@ export default function renderCards(data) {
                 </div>
               </div>
             </li>
-            `
-          }
-          return `
+            `;
+      }
+      return `
               <li class="gallery__item">
               <div class="coctails__card">
                 <div class="img_wrapper">
@@ -59,7 +55,7 @@ export default function renderCards(data) {
               </div>
             </li>
             `;
-      })
+    })
     .join('');
 
   galleryListRef.innerHTML += card;

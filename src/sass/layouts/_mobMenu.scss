@@ -5,16 +5,9 @@
     display: none;
     @media screen and (min-width: 1280px) {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
     }
 }
-.header__logo{
-@media screen and (min-width: 768px) {
-        z-index: 1000;
-
-    }
-}
-
 .menu-toggle-open {
     position: absolute;
     top: 20px;
@@ -136,13 +129,23 @@
     display: none;
     @media screen and (min-width: 768px) {
         display: flex;
+        margin-left: auto;
         margin-right: 102px;
 }
     @media screen and (min-width: 1280px) {
         display: none;
     }
-
 }
-
+.tab-logo{
+    display: none;
+    @media screen and (min-width: 768px) {
+        position: absolute;
+        top: 20px;
+        left: 15px;  
+        }
+        @media screen and (min-width: 1280px) {
+            display: none;
+        }
+}
 
 

@@ -14,7 +14,12 @@
           srcset="./images/Logo-mob.png 1x, ./images/Logo-mob-x2.png 2x"
           media="(min-width: 220px)"
         />
-        <img class="header__logo" src="./images/Logo-mob.png" alt="logo" />
+        <img
+          class="header__logo"
+          src="./images/Logo-mob.png"
+          style="max-width: 156px"
+          alt="logo"
+        />
       </picture>
     </a>
 
@@ -75,6 +80,7 @@
     </div>
 
     <!-- ////// Tablet menu///// -->
+
     <form action="" class="header__search tablet">
       <input type="text" placeholder="Search" class="header__input" />
       <button type="submit" class="header__search-btn">
@@ -97,6 +103,20 @@
   </div>
 
   <div class="menu-container js-menu-container container" id="mobile-menu">
+    <a href="./index.html" class="header__logo tab-logo">
+      <picture>
+        <source
+          srcset="./images/Logo-tab.png 1x, ./images/Logo-tab-x2.png 2x"
+          media="(min-width: 768px)"
+        />
+        <img
+          class="header__logo"
+          src="./images/Logo-mob.png"
+          style="max-width: 156px"
+          alt="logo"
+        />
+      </picture>
+    </a>
     <button
       aria-expanded="false"
       class="menu-toggle js-close-menu"
