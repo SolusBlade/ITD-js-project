@@ -37,14 +37,15 @@ async function onClick(event) {
 
   const letter = event.target.textContent;
   const { drinks } = await searchByLetter(letter);
-  if (drinks.length <= screenWidth()) {
-    paginationContainer.style.display = 'none';
-  }
   if (drinks === null) {
     paginationContainer.style.display = 'none';
     buildNotFind();
     return;
   }
+  if (drinks.length <= screenWidth()) {
+    paginationContainer.style.display = 'none';
+  }
+  
 
   const coctailData = pagination(drinks);
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));

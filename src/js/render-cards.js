@@ -14,6 +14,15 @@ crateGalleryList();
 export default function renderCards(data) {
 let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
   const galleryListRef = document.querySelector('.gallery__list');
+  const galleryTitleRef = document.querySelector('.gallery__title');
+  const galleryImgRef = document.querySelector('.error-img');
+  
+  galleryTitleRef.innerHTML = `
+    Cocktails
+  `;
+  if(galleryImgRef){
+    galleryImgRef.remove();
+  }
   let card = data
     .map(
       item =>
@@ -64,6 +73,5 @@ let cStorage = JSON.parse(localStorage.getItem("favorite-cocktails"));
             `;
       })
     .join('');
-
   galleryListRef.innerHTML += card;
 }

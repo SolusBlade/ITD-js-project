@@ -162,3 +162,12 @@
 .gallery__list{
   color: var(--change-title);
 }
+.error-img{
+  display: block;
+  width: 345px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+}
+}

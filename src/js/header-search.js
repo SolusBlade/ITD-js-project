@@ -48,16 +48,16 @@ async function onSubmit(e) {
   e.preventDefault();
   galleryList.innerHTML = '';
   numbersContainer.innerHTML = '';
-  console.log(e);
   const { drinks } = await searchFetch(e.target[0].value.trim());
-  if (drinks.length <= screenWidth()) {
-    paginationContainer.style.display = 'none';
-  }
   if (drinks === null) {
     paginationContainer.style.display = 'none';
     buildNotFind();
     return;
   }
+  if (drinks.length <= screenWidth()) {
+    paginationContainer.style.display = 'none';
+  }
+ 
 
   const coctailData = pagination(drinks);
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
