@@ -162,9 +162,31 @@
       transition: color $transition;
       color: var(--modal-text);
     }
+    &:after {
+      content: '';
+      position: absolute;
+      left: 320px;
+      display: inline-block;
+      height: 1em;
+      width: 200px;
+      border-bottom: 1px solid;
+      margin-top: 10px;
+      opacity: 0;
+      -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+      transition: opacity 0.35s, transform 0.35s;
+      -webkit-transform: scale(0, 1);
+      transform: scale(0, 1);
+    }
+
+    &:hover:after {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
     &:hover {
       cursor: pointer;
       color: $accent-color;
+      text-shadow: 1px 1px var(--modal-text);
       &::before {
         color: $accent-color;
       }
