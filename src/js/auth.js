@@ -1,11 +1,14 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import { getStorage, ref, uploadString } from "firebase/storage";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, signIn } from "firebase/auth";
+import Notiflix from 'notiflix';
+
+import * as icons from '../images/icons.svg';
 
 const profileBtn = document.querySelector('.header__profile-btn');
-const assBtn = document.querySelector('#F');
+const profileMobileBtn = document.querySelector('.header__profile-btn.mob-icon');
 
-
+profileBtn.addEventListener("click", getIn);
+profileMobileBtn.addEventListener("click", getIn);
 
 const firebaseConfig = {
   apiKey: "AIzaSyBEyxsja9Xmbt99yqe3GAmeQbiTjDFO9Ss",
@@ -19,29 +22,106 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const authProf = getAuth(app);
-const storage = getStorage(app);
-const cocktailsRef = ref(storage, 'cocktails');
 
 async function getIn(){
     const provider = new GoogleAuthProvider();
     
     try{
         const user = await signInWithPopup(authProf, provider);
-        console.log(user);
+        localStorage.setItem("user", JSON.stringify(user));
+        profileBtn.innerHTML=`<img
+            class="profile_img"
+            src="${user._tokenResponse.photoUrl}"
+            alt="profile_img"
+            width="40"
+        />
+        `;
+        profileMobileBtn.innerHTML=`<img
+            class="profile_img"
+            src="${user._tokenResponse.photoUrl}"
+            alt="profile_img"
+            width="40"
+        />
+        `;
+        onLogIn(user._tokenResponse.displayName);
+        profileBtn.removeEventListener("click", getIn);
+        profileBtn.addEventListener("click", getOut);
+        profileMobileBtn.removeEventListener("click", getIn);
+        profileMobileBtn.addEventListener("click", getOut);
     } catch(error) {
-        console.log(error);
+
     }
 }
-
-async function onBtnClick(){
-    const message = 'This is my message.';
-    console.log(storage);
-    uploadString(cocktailsRef, message).then((snapshot) => {
-     console.log(snapshot);
-     
-    });
+async function getOut(){
+    const userName = JSON.parse(localStorage.getItem("user"))._tokenResponse.displayName;
+    onLogOut(userName);
+    localStorage.removeItem("user");
+    signOut(authProf);
+    profileName = "";
+    profileBtn.innerHTML=`
+    <svg width="40" height="40" class="header__profile-ico">
+        <use href="${icons}#icon-profile"></use>
+    </svg>
+    `
+    profileMobileBtn.innerHTML=`
+    <svg width="40" height="40" class="header__profile-ico">
+        <use href="${icons}#icon-profile"></use>
+    </svg>
+    `
+    profileBtn.removeEventListener("click", getOut);
+    profileBtn.addEventListener("click", getIn);
+    profileMobileBtn.removeEventListener("click", getOut);
+    profileMobileBtn.addEventListener("click", getIn);
 }
 
+// async function onUpload(){
+//     const provider = new GoogleAuthProvider();
+    
+//     try{
+//         console.log(JSON.parse(localStorage.getItem("user")));
+//         const user = await signInWithPopup(JSON.parse(localStorage.getItem("user")), provider);
+//         profileBtn.innerHTML=`<img
+//             class="profile_img"
+//             src="${user._tokenResponse.photoUrl}"
+//             alt="profile_img"
+//             width="40"
+//         />
+//         `;
+//         profileMobileBtn.innerHTML=`<img
+//             class="profile_img"
+//             src="${user._tokenResponse.photoUrl}"
+//             alt="profile_img"
+//             width="40"
+//         />
+//         `;
+//         profileBtn.removeEventListener("click", getIn);
+//         profileBtn.addEventListener("click", getOut);
+//         profileMobileBtn.removeEventListener("click", getIn);
+//         profileMobileBtn.addEventListener("click", getOut);
+//     } catch(error) {
+//         console.log(error);
+//     }
+// }
 
-profileBtn.addEventListener("click", getIn);
-// assBtn.addEventListener('click', onBtnClick);
+// onUpload();
+// // if(){
+    
+// // }
+
+
+function onLogIn(name){
+    Notiflix.Notify.success(
+        `Nice to meet you ${name}!`,
+        {
+          timeout: 2000,
+        },
+      );
+}
+function onLogOut(name){
+    Notiflix.Notify.success(
+        `Good Bye ${name}!`,
+        {
+          timeout: 2000,
+        },
+      );
+}

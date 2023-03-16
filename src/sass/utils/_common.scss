@@ -42,6 +42,7 @@ body {
   color: $title-light-color;
   font-family: $primary-font;
   font-style: normal;
+  transition: color $transition, background-color $transition;
 }
 input {
   outline: none;

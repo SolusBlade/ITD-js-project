@@ -1,19 +1,28 @@
-.hero-container {
+.hero-section{
     @media screen and (max-width: 767px) {
-        padding-top: 69px;
+        padding-top: 60px;
         padding-bottom: 40px;
     }
     @media screen and (min-width: 768px){
+        padding-top: 50px;
+        padding-bottom: 110px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding-top: 50px;
+        padding-bottom: 105px;
+    }
+}
+
+
+.hero-container {
+    
+    @media screen and (min-width: 768px){
         display: flex;
         justify-content: space-between;
-        padding-top: 100px;
-        padding-bottom: 124px;
     }
     @media screen and (min-width: 1280px) {
         display: flex;
         justify-content: space-between;
-        padding-top: 97px;
-        padding-bottom: 105px;
     }
 }
 

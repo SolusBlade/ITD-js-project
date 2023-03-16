@@ -1,25 +1,29 @@
 .gallery {
-  @include tablet_max {
-    padding-top: 40px;
-  }
-  @include tablet {
-    padding-top: 60px;
-  }
+  // @include tablet_max {
+  //   padding-top: 40px;
+  // }
+  // @include tablet {
+  //   padding-top: 60px;
+  // }
 }
 .gallery__title {
   text-align: center;
+  margin: 0 auto;
   margin-bottom: 60px;
   @include tablet_max {
     font-weight: 600;
     font-size: 22px;
     line-height: 1.9;
+    max-width: 280px;
   }
   @include tablet {
     font-size: 32px;
+    width: 330px;
   }
   @include desktop {
     font-size: 48px;
     line-height: 1.5;
+    width: 493px;
   }
 }
 
@@ -167,6 +171,7 @@
 }
 .gallery__title {
   color: var(--change-title);
+  transition: color $transition;
 }
 .gallery__list {
   color: var(--change-title);

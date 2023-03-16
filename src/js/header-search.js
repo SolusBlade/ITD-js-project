@@ -56,11 +56,11 @@ async function onSubmit(e) {
   if (drinks === null) {
     paginationContainer.style.display = 'none';
     buildNotFind();
-    e.target[0].value = '';
+    e.target.reset();
     return;
   }
 
-  e.target[0].value = '';
+  e.target.reset();
   const coctailData = pagination(drinks);
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(coctailData));
 
