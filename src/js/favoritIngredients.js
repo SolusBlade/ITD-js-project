@@ -4,7 +4,7 @@ import BASE_URL from './base-url';
 import * as icons from '../images/icons.svg';
 
 const storageData = new FavoritesList();
-console.log(storageData.ingredients);
+
 const listIngridient = document.querySelector('.favorite-ingredients__list');
 
 // Пустий список//

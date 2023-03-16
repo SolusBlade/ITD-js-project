@@ -4,7 +4,6 @@ import BASE_URL from './base-url';
 import * as icons from '../images/icons.svg';
 
 const storageData = new FavoritesList();
-console.log(storageData.ingredients);
 const listCocktails = document.querySelector('.favorite-cocktails__list');
 const listIngridient = document.querySelector('.favorite-ingredients__list');
 
@@ -28,7 +27,7 @@ async function fetchDataCoctail(id) {
 }
 //Перевірка на пустий localStorage//
 if (storageData.cocktails.length === 0) {
-  return renderListCocktail();
+  renderListCocktail();
 }
 apiForIdCoctail();
 //Запит по id на коктель//
@@ -90,7 +89,7 @@ function createCardCoctail(data) {
 }
 
 if (storageData.ingredients.length === 0) {
-  return renderListIngredient();
+  renderListIngredient();
 }
 apiForIdIngredient();
 
@@ -141,7 +140,12 @@ function createCardIngridient(data) {
   `;
     })
     .join('');
-  listIngridient.insertAdjacentHTML('beforeend', card);
+  if(listIngridient){
+    listIngridient.insertAdjacentHTML('beforeend', card);
+  }
   const galleryFavorits = document.querySelector('.favorite-cocktails');
-  galleryFavorits.addEventListener('click', onBtnClick);
+  if(galleryFavorits){
+    galleryFavorits.addEventListener('click', onBtnClick);
+  }
+  
 }
