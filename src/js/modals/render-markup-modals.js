@@ -3,7 +3,7 @@ import { refs } from '../config/refs';
 const { modalRecipeRenderEl, modalIngredientRenderEl } = refs;
 
 function renderRecipe(drink) {
-  const { strDrink, strInstructions, strDrinkThumb } = drink;
+  const { idDrink, strDrink, strInstructions, strDrinkThumb } = drink;
 
   const markup = `<div class="modal-recipe__top-wrap">
   <div class="modal-recipe__title-ingred-wrap">
@@ -31,7 +31,10 @@ function renderRecipe(drink) {
       <p class="modal-recipe__instructions-text">
         ${strInstructions}
       </p>
-    </div>`;
+    </div>
+    <button class="modal-recipe__btn" type="button" data-id="${idDrink}" data-favorite="cocktail">
+      Add to favorite
+    </button>`;
 
   modalRecipeRenderEl.insertAdjacentHTML('beforeend', markup);
 }
@@ -78,7 +81,10 @@ function renderIngredient(ingredient) {
       <li class="modal-ingredient__item">Type: ${strType}</li>
       <li class="modal-ingredient__item">Alcohol: ${alcohol}</li>
       <li class="modal-ingredient__item">Alcohol by volume: ${abv}</li>
-    </ul>`;
+    </ul>
+    <button class="modal-ingredient__btn" type="button" data-id="${idIngredient}" data-favorite="ingredient">
+      Add to favorite
+    </button>`;
   modalIngredientRenderEl.insertAdjacentHTML('beforeend', markup);
 }
 
