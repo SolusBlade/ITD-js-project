@@ -8,8 +8,7 @@ const storageData = new FavoritesList();
 const listCocktails = document.querySelector('.favorite-cocktails__list');
 const galeryFavorits = document.querySelector('.favorite-cocktails');
 galeryFavorits.addEventListener('click', onBtnClick);
-const buttonOpen = document.querySelector('.favorite-cocktails__list');
-buttonOpen.addEventListener('click', openModalRecipe);
+listCocktails.addEventListener('click', openModalRecipe);
 
 // Пустий список//
 
@@ -69,7 +68,6 @@ function onBtnClick(event) {
   }
   return;
 }
-// renderListCocktail();
 
 //Рендер картки//
 function createCardCoctail(data) {
@@ -80,7 +78,7 @@ function createCardCoctail(data) {
             <div class="favorite-cocktails__item-container">
               <h2 class="favorite-cocktails__item-title">${item.strDrink}</h2>
               <div class="favorite-button-container">
-                <button type="button" data-type="open-learn-more" data-id="${item.idDrink}" class="favorite-button__learn-more">
+                <button type="button" data-type='open-learn-more' data-id="${item.idDrink}" class="favorite-button__learn-more">
                   Learn more
                 </button>
                 <button type="button" data-id="${item.idDrink}" class="favorite-button__remove">
