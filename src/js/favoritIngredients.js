@@ -9,8 +9,7 @@ const storageData = new FavoritesList();
 const listIngridient = document.querySelector('.favorite-ingredients__list');
 const galleryFavoritsIng = document.querySelector('.favorite-ingredients');
 galleryFavoritsIng.addEventListener('click', onBtnClick);
-const buttonOpen = document.querySelector('.favorite-ingredients__list');
-buttonOpen.addEventListener('click', openModalIngredient);
+listIngridient.addEventListener('click', openModalIngredient);
 
 // Пустий список//
 
@@ -95,3 +94,5 @@ function createCardIngridient(data) {
     .join('');
   listIngridient.insertAdjacentHTML('beforeend', card);
 }
+
+export { renderListIngredient };
