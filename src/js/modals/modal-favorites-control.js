@@ -72,7 +72,7 @@ function onModalIngredientBtnClick(event) {
   }
 
   onAddBtn(targetBtn);
-  onAddIngredientBtn(targetBtn, ingredientId);
+  onAddIngredientBtn(ingredientId);
   storage.addIngredient(ingredientId);
 }
 
@@ -90,9 +90,7 @@ async function onAddCocktailBtn(button, id) {
   }
   const cocktail = document.querySelector(".favorite-cocktails");
   if(cocktail){
-    console.log(id)
     const data = await fetchDataCoctail(id);
-    console.log(data);
     createCardCoctail(data);
   }
 }
@@ -100,9 +98,7 @@ async function onAddCocktailBtn(button, id) {
 async function onAddIngredientBtn(id) {
   const ingredient = document.querySelector(".favorite-ingredients");
   if(ingredient){
-    console.log(id)
     const data = await fetchDataIngredients(id);
-    console.log(data);
     createCardIngridient(data);
   }
 }
