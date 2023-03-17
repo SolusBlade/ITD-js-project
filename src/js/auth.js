@@ -58,7 +58,6 @@ async function getOut(){
     onLogOut(userName);
     localStorage.removeItem("user");
     signOut(authProf);
-    profileName = "";
     profileBtn.innerHTML=`
     <svg width="40" height="40" class="header__profile-ico">
         <use href="${icons}#icon-profile"></use>
