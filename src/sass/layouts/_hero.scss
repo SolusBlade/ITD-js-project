@@ -165,6 +165,7 @@
 }
 .hero-title-description{
     color:var(--change-title);
+    transition: color $transition;
 }
 
 .hero-modal-search {
@@ -202,13 +203,12 @@
 .mob-alphabet-list-item:not(:last-child) {
     margin-bottom: 13px;
 }
-.mob-alphabet-list ::-webkit-scrollbar {
+.hero-modal-search ::-webkit-scrollbar {
     background-color: transparent;
-    width: 1.7px;
-    
+    width: 4px;
 }
-.mob-alphabet-list ::-webkit-scrollbar-thumb {
+.hero-modal-search ::-webkit-scrollbar-thumb {
     height: 34px;
     border-radius: 4px;
-    border: 1.7px solid $medium-grey-color;
+    border: 3px solid $medium-grey-color;
 }
