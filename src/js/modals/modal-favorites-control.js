@@ -120,9 +120,11 @@ export { onModalRecipeBtnClick, onModalIngredientBtnClick };
 const listIngridient = document.querySelector('.favorite-ingredients__list');
 
 function renderListIngredient() {
-  const message = `  <p class="favorite-ingredients__text">
-          You haven't added any favorite ingridients yet
-      </p>`;
+  const message = `
+    <p class="favorite-ingredients__text">
+      You haven't added any favorite ingridients yet
+    </p>
+    `;
 
       if(listIngridient){
         listIngridient.insertAdjacentHTML('beforebegin', message);
