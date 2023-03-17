@@ -7,16 +7,20 @@ import { openModalRecipe } from './modals/modal-recipe';
 const storageData = new FavoritesList();
 const listCocktails = document.querySelector('.favorite-cocktails__list');
 const galeryFavorits = document.querySelector('.favorite-cocktails');
-galeryFavorits.addEventListener('click', onBtnClick);
-listCocktails.addEventListener('click', openModalRecipe);
+
+if(galeryFavorits){
+  galeryFavorits.addEventListener('click', onBtnClick);
+  listCocktails.addEventListener('click', openModalRecipe);
+}
 
 // Пустий список//
 function renderListCocktail() {
   const message = `<p class="favorite-cocktails__text">
           You haven't added any favorite cocktails yet
         </p>`;
-
-  listCocktails.insertAdjacentHTML('beforebegin', message);
+  if(listCocktails){
+    listCocktails.insertAdjacentHTML('beforebegin', message);
+  }
 }
 
 //Запит API//
@@ -31,7 +35,9 @@ async function fetchDataCoctail(id) {
 //Перевірка на пустий localStorage//
 if (storageData.cocktails.length === 0) {
   renderListCocktail();
-  galeryFavorits.removeEventListener('click', onBtnClick);
+  if(galeryFavorits) {
+    galeryFavorits.removeEventListener('click', onBtnClick);
+  }
 }
 apiForIdCoctail();
 //Запит по id на коктель//
@@ -97,3 +103,4 @@ function createCardCoctail(data) {
 
   listCocktails.insertAdjacentHTML('beforeend', card);
 }
+export {createCardCoctail};

@@ -8,17 +8,20 @@ const storageData = new FavoritesList();
 
 const listIngridient = document.querySelector('.favorite-ingredients__list');
 const galleryFavoritsIng = document.querySelector('.favorite-ingredients');
-galleryFavoritsIng.addEventListener('click', onBtnClick);
-listIngridient.addEventListener('click', openModalIngredient);
 
+if (galleryFavoritsIng) {
+  galleryFavoritsIng.addEventListener('click', onBtnClick);
+  listIngridient.addEventListener('click', openModalIngredient);
+}
 // Пустий список//
 
 function renderListIngredient() {
   const message = `  <p class="favorite-ingredients__text">
           You haven't added any favorite ingridients yet
       </p>`;
-
-  listIngridient.insertAdjacentHTML('beforebegin', message);
+  if(listIngridient){
+    listIngridient.insertAdjacentHTML('beforebegin', message);
+  }
 }
 
 //Запит API//
@@ -98,4 +101,4 @@ function createCardIngridient(data) {
   listIngridient.insertAdjacentHTML('beforeend', card);
 }
 
-export { renderListIngredient };
+export { renderListIngredient, createCardIngridient};
