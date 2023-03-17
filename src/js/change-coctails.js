@@ -15,16 +15,22 @@ function changeCoctails(e) {
   const keys = Object.keys(coctailData);
 
   if (e.target.classList.contains('numbers')) {
-    if ((document.querySelector('.next').disabled = true)) {
-      document.querySelector('.next').disabled = false;
-    }
-
-    if ((document.querySelector('.previous').disabled = true)) {
-      document.querySelector('.previous').disabled = false;
-    }
     currentActiveBtn.classList.remove('active');
     e.target.classList.add('active');
     page = +e.target.textContent;
+    if (page !== 1) {
+      document.querySelector('.previous').disabled = false;
+    }
+    if (page === 1) {
+      document.querySelector('.previous').disabled = true;
+    }
+    if (keys.length === page) {
+      document.querySelector('.next').disabled = true;
+    }
+    if (keys.length !== page) {
+      document.querySelector('.next').disabled = false;
+    }
+
     galleryList.innerHTML = '';
     buildCard(coctailData[page]);
   }
@@ -36,8 +42,12 @@ function changeCoctails(e) {
     currentActiveBtn.classList.remove('active');
     currentActiveBtn.nextElementSibling.classList.add('active');
     page += 1;
+    console.log(page);
     if (keys.length === page) {
       document.querySelector('.next').disabled = true;
+    }
+    if (keys.length !== page) {
+      document.querySelector('.next').disabled = false;
     }
     galleryList.innerHTML = '';
     buildCard(coctailData[page]);
@@ -55,6 +65,7 @@ function changeCoctails(e) {
     }
 
     page -= 1;
+    console.log(page);
     galleryList.innerHTML = '';
     buildCard(coctailData[page]);
   }
