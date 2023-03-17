@@ -25,7 +25,6 @@
         line-height: calc(24/18);
         letter-spacing: 0.02em;
 
-        // color: $title-light-color;
         color: var(--header-link);
         transition: color $transition;
         &:hover,
@@ -110,8 +109,6 @@
     font-size: 18px;
     line-height: 1.33;
     color: var(--change-btn-light);
-// color: $accent-color;
-    // color: #fd5103;
 }
 
 .header__theme-dark {
@@ -119,8 +116,6 @@
     font-size: 18px;
     line-height: 1.33;
     color:var(--change-btn-dark);
-// color: $medium-grey-color;
-    // color: #5f6775;
 }
 
 .toggle-button {
@@ -129,9 +124,7 @@
     height: 20px;
     margin: 0;
 
-    // background: #ffffff;
 background-color: $white-color;
-    // border: 0.6px solid #fd5103;
     border: 0.6px solid $accent-color;
     border-radius: 20px;
     outline: none;
@@ -151,7 +144,6 @@ background-color: $white-color;
     top: 1px;
     width: 16px;
     height: 16px;
-    // background-color: #fd5103;
     background-color: $accent-color;
     border-radius: 50%;
 
@@ -163,7 +155,6 @@ background-color: $white-color;
 .toggle-button:checked::after {
     transform: translateX(calc(100% + 3px));
 background-color: $white-color;
-    // background-color: #fff;
 }
 
 .toggle-button:checked {
@@ -171,7 +162,6 @@ background-color: $white-color;
     background-color: $accent-color;
 }
 .dark-theme {
-    // background-color: #202025;
     background-color:$title-light-color;
 
     --header-link: #FCFCFC;

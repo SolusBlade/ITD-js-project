@@ -1,9 +1,5 @@
 let paginationData = {};
-// function createObjectCoctails() {
-//   paginationData[paginationDateKey] = [...partOfDrinks];
-//   paginationDateKey += 1;
-//   partOfDrinks = [];
-// }
+
 
 export default function pagination(coctails) {
   let paginationDateKey = 1;

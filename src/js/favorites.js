@@ -1,13 +1,10 @@
-import axios from 'axios';
-// const keyInput = JSON.parse(localStorage.getItem(KEYS));
+
 
 const listCocktails = document.querySelector('.favorite-cocktails__list');
 const listIngridient = document.querySelector('.favorite-ingredients__list');
 const buttonRemove = document.querySelector('.favorite-button__remove');
 
-if (listCocktails) {
-  // buttonRemove.addEventListener('click', removeFromLocalStorege);
-}
+
 
 function renderListFavorites() {
   listCocktails.innerHTML = `

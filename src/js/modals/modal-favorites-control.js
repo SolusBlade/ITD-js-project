@@ -13,10 +13,14 @@ function onModalRecipeBtnClick(event) {
     onRemoveBtn(targetBtn);
     onRemoveGalleryBtn(parentBtn[1]);
     storage.removeCocktail(cocktailId);
-    // document
-    //   .querySelector(`[data-id = '${cocktailId}']`)
-    //   .closest('.favorite-cocktails__item')
-    //   .remove();
+    const cocktail = document.querySelector(".favorite-cocktails__item");
+    if(cocktail){
+      document
+      .querySelector(`[data-id = '${cocktailId}']`)
+      .closest('.favorite-cocktails__item')
+      .remove();
+    }
+    
     return;
   }
   onAddBtn(targetBtn);
@@ -30,10 +34,13 @@ function onModalIngredientBtnClick(event) {
   if (storage.ingredients.includes(ingredientId)) {
     onRemoveBtn(targetBtn);
     storage.removeIngredient(ingredientId);
-    document
+    const ingredient = document.querySelector(".favorite-ingredients__item");
+    if(ingredient){
+      document
       .querySelector(`[data-id = '${ingredientId}']`)
       .closest('.favorite-ingredients__item')
       .remove();
+    }
     if (storage.ingredients.length === 0) {
       renderListIngredient();
     }
@@ -48,12 +55,13 @@ function onAddBtn(button) {
   button.textContent = `Remove from favorites`;
 }
 function onAddGalleryBtn(button) {
-  button.innerHTML = `
+  if(document.querySelector(".gallery__list"))
+  {button.innerHTML = `
   Remove
   <svg class="empty__heart" width="21" height="19">
       <use href="${icons}#icon-full-heart"></use>
   </svg>
-`;
+`;}
 }
 function onRemoveBtn(button) {
   button.textContent = `Add to favorites`;

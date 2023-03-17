@@ -55,14 +55,6 @@ function closeOnBackdropClick(event) {
     modalClose(modalIngredientEl);
 }
 
-// function modalClose(element) {
-//   modalRecipeEl.removeEventListener('click', isBackdrop);
-//   modalRecipeCloseBtn.removeEventListener('click', modalRecipeClose);
-//   clearRenderEl();
-//   hideModal(modalRecipeEl);
-//   isScrollModalClosed();
-// }
-
 export {
   showModal,
   hideModal,

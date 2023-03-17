@@ -27,7 +27,7 @@ async function fetchDataCoctail(id) {
     const { data } = await axios.get(`${BASE_URL}lookup.php?iid=${id}`);
     return data.ingredients[0];
   } catch (error) {
-    console.log(error);
+
   }
 }
 //Перевірка на пустий localStorage//
@@ -50,24 +50,27 @@ async function apiForIdIngredient() {
     }
     return createCardIngridient(ingredient);
   } catch (error) {
-    console.log(error);
+
   }
 }
 //Видалити з localStorage//
 function onBtnClick(event) {
   const ingredientId = event.target.dataset.id;
-  if (storageData.ingredients.includes(ingredientId)) {
-    storageData.removeIngredient(ingredientId);
-    document
-      .querySelector(`[data-id = '${ingredientId}']`)
-      .closest('.favorite-ingredients__item')
-      .remove();
-    if (storageData.ingredients.length === 0) {
-      renderListIngredient();
-      galleryFavoritsIng.removeEventListener('click', onBtnClick);
+  if (event.target.dataset.favorite === 'ingredient') {
+    if (storageData.ingredients.includes(ingredientId)) {
+      storageData.removeIngredient(ingredientId);
+      document
+        .querySelector(`[data-id = '${ingredientId}']`)
+        .closest('.favorite-ingredients__item')
+        .remove();
+      if (storageData.ingredients.length === 0) {
+        renderListIngredient();
+        galleryFavoritsIng.removeEventListener('click', onBtnClick);
+      }
+      return;
     }
-    return;
   }
+  
 }
 //Рендер картки//
 
@@ -81,7 +84,7 @@ function createCardIngridient(data) {
               <button type="button"  data-type="open-ingredient" data-name="${item.strIngredient}" class="favorite-button__learn-more">
                 Learn more
               </button>
-              <button type="button" data-id="${item.idIngredient}" class="favorite-button__remove">
+              <button type="button" data-id="${item.idIngredient}" data-favorite="ingredient" class="favorite-button__remove">
                 Remove
                 <svg class="favorite-button__icon" width="17" height="15">
                   <use href="${icons}#icon-full-heart"></use>

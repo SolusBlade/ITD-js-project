@@ -39,7 +39,6 @@ async function fetchIngredientByName(name) {
 
     return data;
   } catch ({ response }) {
-    console.log('error', response);
 
     return response;
   }
