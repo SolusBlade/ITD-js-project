@@ -94,9 +94,11 @@ function renderIngredient(ingredient) {
     strAlcohol,
     strABV,
   } = ingredient;
+
   const textCut = strDescription
-    ? strDescription.slice(1, strDescription.length)
+    ? strDescription.slice(strIngredient.length, strDescription.length)
     : '-';
+
   const alcohol = strAlcohol || 'None';
   const abv = strABV || '-';
 

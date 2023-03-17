@@ -78,7 +78,6 @@ async function getOut(){
 async function onUpload(){
     try{
         const user = JSON.parse(localStorage.getItem("user"));
-        // const user = await signInWithPopup(JSON.parse(localStorage.getItem("user")), provider);
         profileBtn.innerHTML=`<img
             class="profile_img"
             src="${user._tokenResponse.photoUrl}"
@@ -103,9 +102,7 @@ async function onUpload(){
 }
 
 
-// if(){
-    
-// }
+
 
 
 function onLogIn(name){

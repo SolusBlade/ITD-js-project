@@ -89,7 +89,7 @@
     opacity: 0;
     visibility: hidden;
     transform: translateX(100%) scale(0);
-    transition: transform $transition, opacity $transition, visibility $transition;
+    transition: transform $transition, opacity $transition, visibility $transition, background-color $transition;
     @media screen and (min-width: 768px) {
         align-items: center;
         max-width: 768px;

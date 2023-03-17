@@ -53,6 +53,10 @@ button {
   cursor: pointer;
 }
 ::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 4px;
+}
+.backdrop ::-webkit-scrollbar {
   width: 4px;
   border-radius: 4px;
 }
@@ -61,5 +65,5 @@ button {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #e0e0e0;
+  background: transparent;
 }

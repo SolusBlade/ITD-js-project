@@ -1,7 +1,7 @@
 .hero-section{
     @media screen and (max-width: 767px) {
         padding-top: 60px;
-        padding-bottom: 40px;
+        padding-bottom: 80px;
     }
     @media screen and (min-width: 768px){
         padding-top: 50px;
@@ -165,6 +165,7 @@
 }
 .hero-title-description{
     color:var(--change-title);
+    transition: color $transition;
 }
 
 .hero-modal-search {
@@ -173,7 +174,6 @@
         position: relative;
         width: 93px;
         margin: 0 auto;
-        // padding: 10px 6.5px;
     }
     @media screen and (min-width: 768px) {
         display: none;
@@ -202,13 +202,12 @@
 .mob-alphabet-list-item:not(:last-child) {
     margin-bottom: 13px;
 }
-::-webkit-scrollbar {
+.hero-modal-search ::-webkit-scrollbar {
     background-color: transparent;
-    width: 1.7px;
-    
+    width: 4px;
 }
-::-webkit-scrollbar-thumb {
+.hero-modal-search ::-webkit-scrollbar-thumb {
     height: 34px;
     border-radius: 4px;
-    border: 1.7px solid $medium-grey-color;
+    border: 3px solid $medium-grey-color;
 }

@@ -8,6 +8,6 @@ export default async function fetchData(request) {
 
     return response.data.drinks;
   } catch (error) {
-    console.log(error);
+
   }
 }

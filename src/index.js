@@ -13,3 +13,5 @@ import './js/header-dark';
 import './js/favorites-action';
 import './js/modals/mob-hero-search';
 import './js/toTopBtn';
+import './js/favorite-btn';
+

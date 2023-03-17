@@ -1,7 +1,7 @@
 const toggleElement = document.querySelectorAll('.dark-mode-toggle');
 const body = document.body;
 
-// console.log('toggleElement',toggleElement);
+
 
 //Для сохранения выбранной тему сайта в браузере будем использовать LocalStorage.
   
@@ -47,10 +47,7 @@ class ThemeToggle {
 
 const toggle = new ThemeToggle();
 
-// DOMContentLoaded событие — DOM готов, поэтому обработчик может искать узлы DOM, инициализировать интерфейс.
-
 window.addEventListener('DOMContentLoaded', () => {
   const isOn = toggle.getTheme();
-  // console.log('isOn', isOn);
   if (isOn) toggle.setThemeOn(toggle.darkTheme);
 });

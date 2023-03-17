@@ -1,7 +1,6 @@
 export const refs = {
   body: document.querySelector('body'),
   backdrop: document.querySelector('.backdrop'),
-  // backdropIngredient: document.querySelector('.backdrop.ingredient'),
   gallery: document.querySelector('.gallery'),
 
   modalRecipeEl: document.querySelector('[data-modal-recipe]'),
