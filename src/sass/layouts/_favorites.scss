@@ -285,11 +285,10 @@
     position: relative;
     display: inline-block;
 
-    &:hover .header__menu-container,
-    &:focus .header__menu-container {
-        display: flex;
-    }
-
+    // &:hover .header__menu-container,
+    // &:focus .header__menu-container {
+    //     display: flex;
+    // }
 }
 
 .header__menu-container {
