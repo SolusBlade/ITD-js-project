@@ -79,7 +79,7 @@
 .menu-container {
     position: fixed;
     width: 100%;
-    max-width: 480px;
+    max-width: 767px;
     height: 100%;
     padding: 22px 20px;
     background-color: var(--background);
@@ -92,7 +92,7 @@
     transition: transform $transition, opacity $transition, visibility $transition, background-color $transition;
     @media screen and (min-width: 768px) {
         align-items: center;
-        max-width: 768px;
+        max-width: 1279px;
     }
     @media screen and (min-width: 1280px) {
         display: none;
@@ -102,7 +102,6 @@
 .menu-container.is-open {
     top: 0;
     right: 0;
-    left: 0;
     transform: translateX(0) scale(1);
     opacity: 1;
     visibility: visible;

@@ -2,7 +2,7 @@ import axios from 'axios';
 import FavoritesList from './favorites-storage-class';
 import BASE_URL from './base-url';
 import * as icons from '../images/icons.svg';
-import { openModalRecipe } from '../js/modals/modal-recipe';
+import { openModalRecipe } from './modals/modal-recipe';
 
 const storageData = new FavoritesList();
 const listCocktails = document.querySelector('.favorite-cocktails__list');

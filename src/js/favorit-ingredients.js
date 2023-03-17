@@ -2,7 +2,7 @@ import axios from 'axios';
 import FavoritesList from './favorites-storage-class';
 import BASE_URL from './base-url';
 import * as icons from '../images/icons.svg';
-import { openModalIngredient } from '../js/modals/modal-ingredient';
+import { openModalIngredient } from './modals/modal-ingredient';
 
 const storageData = new FavoritesList();
 

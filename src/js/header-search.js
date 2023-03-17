@@ -4,14 +4,14 @@ import buildCard from './render-cards';
 import buildNotFind from './render-on-not-found';
 import pagination from './pagination';
 import screenWidth from './random-coctails';
-import renderBtn from './renderPaginationBtn';
+import renderBtn from './render-pagination-btn';
 import {
   galleryList,
   paginationContainer,
   STORAGE_KEY,
   changeCoctails,
   page,
-} from './changeCoctails';
+} from './change-coctails';
 
 const searfchDeskFormRef = document.querySelector('.header__search');
 const searfchTabletFormRef = document.querySelector('.header__search.tablet');

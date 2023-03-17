@@ -3,7 +3,7 @@ import fetchData from './fetch-data';
 import renderCards from './render-cards';
 import {
   galleryList
-} from './changeCoctails';
+} from './change-coctails';
 export default function screenWidth() {
   if (window.screen.width < 767) {
     return 3;

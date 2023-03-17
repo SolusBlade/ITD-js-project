@@ -83,5 +83,7 @@ function renderListIngredient() {
           You haven't added any favorite ingridients yet
       </p>`;
 
-  listIngridient.insertAdjacentHTML('beforebegin', message);
+      if(listIngridient){
+        listIngridient.insertAdjacentHTML('beforebegin', message);
+      }
 }
