@@ -12,6 +12,6 @@ import './js/favorites-action';
 import './js/header-dark';
 import './js/favorites-action';
 import './js/modals/mob-hero-search';
-import './js/toTopBtn';
+import './js/to-top-btn';
 import './js/favorite-btn';
 
