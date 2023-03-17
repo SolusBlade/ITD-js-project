@@ -43,11 +43,14 @@ footer {
     width: 44px;
     height: 44px;
   }
+
+  transform: translateY(-10px);
   position: fixed;
   border-radius: 22px;
   cursor: pointer;
+  animation: myanimation 2s infinite linear;
   opacity: 1;
-  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity $transition, transform $transition;
 }
 
 .btn-up::before {
@@ -58,8 +61,24 @@ footer {
   height: 20px;
   left: 12px;
   top: 12px;
+  
 }
 
 .btn-up_hide {
+  transform: translateY(200px);
   opacity: 0;
+}
+
+@keyframes myanimation {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
 }

@@ -9,7 +9,7 @@ function hide() {
 }
 
 window.addEventListener('scroll', () => {
-  window.scrollY > 700 ? show() : hide();
+  window.scrollY > 500 ? show() : hide();
 });
 
 upBtn.addEventListener('click', onClick);
