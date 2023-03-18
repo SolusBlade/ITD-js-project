@@ -117,12 +117,4 @@ function onRemoveGalleryBtn(button) {
 }
 export { onModalRecipeBtnClick, onModalIngredientBtnClick };
 
-// const listIngridient = document.querySelector('.favorite-ingredients__list');
-
-// function renderListIngredient() {
-//   if(!listIngridient){
-//     return;
-//   } 
-//   listIngridient.insertAdjacentHTML('beforebegin', `<p class="favorite-ingredients__text">You haven't added any favorite ingridients yet</p>`);
-// }
 
